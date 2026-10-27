@@ -3,226 +3,287 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>prod.lt – video reklamos su filmavimu ir DI</title>
-<meta name="description" content="Video reklamų prodiusavimas Vilniuje: filmuotos reklamos, filmavimas su DI ir reklamos, sukurtos vien su DI. Vytautas Jakutis, 14 metų patirtis.">
-<meta property="og:title" content="prod.lt – video reklamos su filmavimu ir DI">
-<meta property="og:description" content="Filmuotos reklamos, mišri gamyba ir reklamos, sukurtos su DI. Vienas prodiuseris visam projektui.">
+<title>prod.lt – video reklamų gamyba su DI ir filmuojant</title>
+<meta name="description" content="Video reklamų gamyba Vilniuje: reklamos, sukurtos su dirbtiniu intelektu (DI), mišri gamyba ir filmuotos reklamos. Prodiuseris Vytautas Jakutis, 14 metų patirtis.">
+<meta property="og:title" content="prod.lt – video reklamų gamyba">
+<meta property="og:description" content="Su dirbtiniu intelektu (DI) arba filmuojant. Vienas prodiuseris visam projektui.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://prod.lt/">
-<meta property="og:image" content="https://i.vimeocdn.com/video/1742440840-327eead575bb4af861d130fd4ca4f3a83cceb2f331adc95c290542f83f023011-d_1280x720">
+<meta property="og:image" content="https://drive.google.com/thumbnail?id=1xX3JUjUitZRBq8HdbqAwawj8N0hku7VT&amp;sz=w1200">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap&subset=latin-ext" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=latin-ext" rel="stylesheet">
 <style>
 :root{
-  --dark:#0B0B0C; --dark2:#141416; --line-d:#26262a;
-  --ink:#0E0E0E; --grey:#6B6B6B; --mute:#9b9ba1;
-  --blue:#82C2F6; --panel:#F4F8FC; --white:#fff;
-  --wrap:1320px; --gut:clamp(16px,4vw,48px);
+  --bg:#0E0E0E; --bg2:#151517; --hair:rgba(255,255,255,.09);
+  --ink:#0E0E0E; --grey:#6B6B6B; --mute:#9d9da3; --soft:#c9c9ce;
+  --blue:#82C2F6; --panel:#F4F8FC; --white:#fff; --wa:#3ddc84;
+  --wrap:1280px; --gut:clamp(16px,4vw,40px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;background:var(--dark);color:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-button{font:inherit;color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
 .dot{color:var(--blue)}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-h1,h2,h3{letter-spacing:-.035em;line-height:1}
-h2{font-size:clamp(40px,6vw,84px);font-weight:800}
-.kicker{font-size:14px;font-weight:500;color:var(--mute);margin-bottom:18px}
-.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16px;padding:15px 24px;background:var(--blue);color:var(--ink);border:0;cursor:pointer;transition:background .2s,color .2s}
+h1,h2,h3{letter-spacing:-.035em;line-height:1.02}
+h2{font-size:clamp(40px,5.6vw,76px);font-weight:800}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16px;padding:15px 24px;border-radius:6px;background:var(--blue);color:var(--ink);transition:background .2s,color .2s}
 .btn:hover{background:var(--white)}
 .btn.line{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 .btn.line:hover{background:var(--white);color:var(--ink)}
 
-/* header */
-header{position:fixed;inset:0 0 auto;z-index:30;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-header.solid{background:rgba(11,11,12,.92);backdrop-filter:blur(10px);border-color:var(--line-d)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
-.logo{font-weight:800;font-size:22px;letter-spacing:-.03em;background:var(--ink);padding:5px 11px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
-nav{display:flex;gap:32px;font-size:15px;font-weight:500}
-nav a{opacity:.8;transition:opacity .2s}
-nav a:hover{opacity:1}
-.bar .btn{padding:11px 18px;font-size:15px}
-@media (max-width:860px){nav{display:none}}
+/* ===== header (kaip vjakutis.lt) ===== */
+header{position:fixed;inset:0 0 auto;z-index:40;background:rgba(14,14,14,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--hair);transition:background .3s}
+header.solid{background:rgba(14,14,14,.9)}
+.h1row{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px;border-bottom:1px solid var(--hair)}
+.logo{font-weight:800;font-size:22px;letter-spacing:-.035em}
+.contacts{display:flex;align-items:center;gap:6px}
+.contacts a{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--soft);padding:6px 10px;border-radius:6px;transition:color .2s,background .2s}
+.contacts a:hover{color:var(--white);background:rgba(255,255,255,.06)}
+.contacts a.wa{color:var(--wa)}
+.contacts a.wa:hover{color:var(--wa)}
+.h2row{display:flex;justify-content:flex-end;height:38px;align-items:center}
+.h2row nav{display:flex;gap:26px}
+.h2row a{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);transition:color .2s}
+.h2row a:hover{color:var(--white)}
+@media (max-width:760px){
+  .contacts a span{display:none}
+  .contacts a{padding:9px}
+  .contacts svg.i{width:18px;height:18px}
+  .h2row{justify-content:flex-start;overflow-x:auto;scrollbar-width:none}
+  .h2row nav{gap:20px;white-space:nowrap}
+}
 
-/* hero */
+/* ===== hero ===== */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.hero-media{position:absolute;inset:0;z-index:-2;background:#000 center/cover no-repeat}
-.hero-media iframe{position:absolute;top:50%;left:50%;width:177.78vh;height:56.25vw;min-width:100%;min-height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(11,11,12,.58)}
-.hero-in{width:100%;padding-top:140px;padding-bottom:clamp(40px,7vh,80px)}
-.hero h1{font-size:clamp(48px,8.4vw,140px);font-weight:800;max-width:13.5ch}
-.hero .sub{margin-top:28px;max-width:54ch;font-size:clamp(17px,1.5vw,20px);color:#d6d6da}
-.hero-foot{margin-top:44px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.hero-media{position:absolute;inset:0;z-index:-2;background:#000 center/cover no-repeat;transition:background-image .4s}
+.hero-media iframe{position:absolute;top:50%;left:50%;width:177.78vh;height:56.25vw;min-width:100%;min-height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none;opacity:0;transition:opacity .9s}
+.hero-media iframe.on{opacity:1}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,14,14,.55) 0%,rgba(14,14,14,.45) 45%,rgba(14,14,14,.92) 100%)}
+.hero-in{width:100%;padding-top:150px;padding-bottom:clamp(36px,6vh,72px)}
+.hero h1{font-size:clamp(52px,9.2vw,150px);font-weight:800}
+.hero .claim{margin-top:14px;font-size:clamp(22px,3.1vw,44px);font-weight:600;letter-spacing:-.025em;line-height:1.15;color:var(--white)}
+.hero .claim em{font-style:normal;color:var(--blue)}
+.hero .sub{margin-top:26px;font-size:clamp(16px,1.35vw,19px);color:#d4d4d8;max-width:none}
+.hero-foot{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between}
 .hero-foot .ctas{display:flex;flex-wrap:wrap;gap:12px}
-.reel-btn{display:flex;align-items:center;gap:14px;background:none;border:0;cursor:pointer;font-weight:600}
-.reel-btn .pl{width:56px;height:56px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);display:grid;place-items:center;transition:background .2s}
-.reel-btn .pl::after{content:"";border-left:13px solid var(--white);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px}
-.reel-btn:hover .pl{background:var(--blue)}
-.reel-btn:hover .pl::after{border-left-color:var(--ink)}
-.reveal{opacity:0;transform:translateY(24px);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
-.reveal.d2{animation-delay:.15s}.reveal.d3{animation-delay:.3s}
+.reel{display:flex;align-items:center;gap:14px;text-align:left}
+.reel .pl{width:54px;height:54px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);display:grid;place-items:center;transition:background .2s;flex:none}
+.reel .pl svg{width:18px;height:18px;fill:var(--white);margin-left:3px}
+.reel:hover .pl{background:var(--blue);box-shadow:none}
+.reel:hover .pl svg{fill:var(--ink)}
+.reel b{display:block;font-weight:600}
+.reel small{display:block;font-size:13px;color:var(--mute)}
+.reveal{opacity:0;transform:translateY(22px);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+.reveal.d2{animation-delay:.12s}.reveal.d3{animation-delay:.24s}.reveal.d4{animation-delay:.36s}
 @keyframes up{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}}
 
-/* brands marquee */
-.brands{border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);padding:26px 0;overflow:hidden}
-.brands .label{font-size:14px;color:var(--mute);margin-bottom:16px}
-.marquee{display:flex;width:max-content;animation:mq 45s linear infinite}
-.marquee span{font-size:clamp(22px,2.6vw,34px);font-weight:600;letter-spacing:-.02em;padding-right:56px;white-space:nowrap;color:#e9e9ec}
-.marquee span::after{content:"";display:inline-block;width:7px;height:7px;background:var(--blue);margin-left:56px;vertical-align:middle}
+/* ===== brands ===== */
+.brands{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:24px 0 26px;overflow:hidden}
+.brands .label{font-size:13px;color:var(--mute);margin-bottom:14px}
+.marquee{display:flex;width:max-content;animation:mq 50s linear infinite}
+.marquee span{font-size:clamp(20px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;white-space:nowrap;color:#e6e6ea;display:flex;align-items:center}
+.marquee span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);margin:0 44px}
 .brands:hover .marquee{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.marquee{animation:none;flex-wrap:wrap;width:auto}}
 
-/* work */
-section{padding:clamp(80px,11vw,140px) 0}
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px;flex-wrap:wrap;margin-bottom:56px}
-.sec-head p{max-width:46ch;color:var(--mute);font-size:18px}
-.row{margin-top:64px}
-.row:first-of-type{margin-top:0}
-.row-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}
-.row-top h3{font-size:clamp(22px,2vw,28px);font-weight:600;letter-spacing:-.02em}
-.row-top h3 small{font-size:15px;font-weight:500;color:var(--mute);margin-left:10px;letter-spacing:0}
-.arrows{display:flex;gap:8px}
-.arrows button{width:46px;height:46px;border-radius:50%;background:none;border:0;box-shadow:inset 0 0 0 1px #3a3a40;cursor:pointer;display:grid;place-items:center;transition:background .2s,box-shadow .2s}
-.arrows button:hover:not(:disabled){background:var(--white);box-shadow:none}
-.arrows button:hover:not(:disabled) svg{stroke:var(--ink)}
-.arrows button:disabled{opacity:.3;cursor:default}
-.arrows svg{width:18px;height:18px;stroke:var(--white);fill:none;stroke-width:2}
-.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2*20px) / 3.25);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-right:var(--gut);cursor:grab}
+/* ===== projects ===== */
+section{padding:clamp(80px,10vw,130px) 0}
+.sec-head{margin-bottom:52px}
+.sec-head p{margin-top:18px;color:var(--mute);font-size:18px}
+.row{margin-top:72px}
+.row:first-child{margin-top:0}
+.row-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:16px}
+.row-top h3{font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:-.02em}
+.row-top .note{display:block;margin-top:4px;font-size:13px;color:var(--mute);letter-spacing:0;font-weight:400}
+.row-top .more{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);white-space:nowrap;padding-bottom:3px}
+.row-top .more:hover{color:var(--white)}
+.car{position:relative}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2*16px) / 3);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .track::-webkit-scrollbar{display:none}
-.track.drag{cursor:grabbing;scroll-snap-type:none}
+.track.drag{scroll-snap-type:none;cursor:grabbing}
 .track.drag .card{pointer-events:none}
-@media (max-width:1000px){.track{grid-auto-columns:calc((100% - 20px) / 2.2)}}
-@media (max-width:620px){.track{grid-auto-columns:84%;gap:12px}}
-.card{scroll-snap-align:start;background:none;border:0;text-align:left;cursor:pointer;display:block}
-.card .th{position:relative;aspect-ratio:16/9;background:var(--dark2);overflow:hidden}
-.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .4s;opacity:.92}
-.card:hover img{transform:scale(1.05);opacity:1}
-.card .th::after{content:"";position:absolute;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l10 6-10 6z' fill='%230E0E0E'/%3E%3C/svg%3E") center/18px no-repeat;opacity:0;transform:scale(.8);transition:opacity .25s,transform .25s}
-.card:hover .th::after,.card:focus-visible .th::after{opacity:1;transform:none}
-.card .tag{position:absolute;left:12px;top:12px;font-size:12px;font-weight:600;background:rgba(11,11,12,.75);padding:4px 9px}
-.card .tag.ai{background:var(--blue);color:var(--ink)}
-.card .cap{padding-top:14px}
-.card .cap b{display:block;font-weight:600;font-size:17px}
-.card .cap span{color:var(--mute);font-size:14px}
+@media (max-width:980px){.track{grid-auto-columns:calc((100% - 16px) / 2)}}
+@media (max-width:600px){.track{grid-auto-columns:86%;gap:12px}}
+.card{scroll-snap-align:start;text-align:left;display:block;width:100%}
+.card .th{display:block;position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--bg2);border:1px solid var(--hair);transition:border-color .3s,box-shadow .3s}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1)}
+.card .th::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(14,14,14,.6),rgba(14,14,14,.08) 45%,transparent);transition:opacity .3s}
+.card .pb{position:absolute;z-index:2;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:rgba(14,14,14,.82);display:grid;place-items:center;transition:background .25s,transform .25s}
+.card .pb svg{width:18px;height:18px;fill:var(--white);margin-left:3px;transition:fill .25s}
+.card .pb.ext svg{margin-left:0;fill:none;stroke:var(--white);stroke-width:2}
+.card:hover .th{border-color:rgba(130,194,246,.55);box-shadow:0 0 0 1px rgba(130,194,246,.2),0 14px 44px -10px rgba(130,194,246,.45)}
+.card:hover img{transform:scale(1.05)}
+.card:hover .th::before{opacity:.6}
+.card:hover .pb{background:var(--blue);transform:scale(1.06)}
+.card:hover .pb svg{fill:var(--ink)}
+.card:hover .pb.ext svg{fill:none;stroke:var(--ink)}
+.card .cap{display:block;margin-top:10px;font-size:14px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .fallback{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;font-size:20px;color:#55555c;padding:20px;text-align:center}
+.arw{position:absolute;z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(14,14,14,.8);border:1px solid var(--hair);display:grid;place-items:center;transform:translateY(-50%);transition:opacity .2s,background .2s}
+.arw:hover{background:var(--white);color:var(--ink)}
+.arw.l{left:12px}.arw.r{right:12px}
+.arw[disabled]{opacity:0;pointer-events:none}
+.pages{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:18px}
+.pages button{width:6px;height:6px;border-radius:3px;background:#3a3a40;transition:width .25s,background .25s;padding:0}
+.pages button.on{width:22px;background:var(--blue)}
 
-/* services (light) */
+/* ===== services (light) ===== */
 .light{background:var(--panel);color:var(--ink)}
-.light .sec-head p{color:var(--grey)}
-.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc article{background:var(--white);display:flex;flex-direction:column}
-.svc .img{aspect-ratio:16/10;background:#dfe7ef center/cover no-repeat;position:relative}
-.svc .img .tag{position:absolute;left:16px;top:16px;font-size:13px;font-weight:600;background:var(--ink);color:var(--white);padding:5px 11px}
-.svc article:first-child .img .tag{background:var(--blue);color:var(--ink)}
-.svc .body{padding:28px 28px 32px;display:flex;flex-direction:column;gap:14px;flex:1}
-.svc h3{font-size:28px;font-weight:800}
-.svc p{color:#3d3d40}
-.svc ul{list-style:none;display:grid;gap:9px;margin-top:4px;font-size:15px}
-.svc li{padding-left:22px;position:relative}
-.svc li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:2px;background:var(--blue)}
-.svc .fit{margin-top:auto;padding-top:18px;border-top:1px solid #e3e8ee;font-size:14px;color:var(--grey)}
-@media (max-width:980px){.svc{grid-template-columns:1fr}}
-.other{margin-top:72px;display:grid;grid-template-columns:280px 1fr;gap:28px 48px}
+.light .sec-head p{color:#4a4a4f}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tabs button{padding:11px 18px;border-radius:999px;font-weight:600;font-size:15px;color:var(--ink);box-shadow:inset 0 0 0 1px #cfd8e2;transition:background .2s,color .2s,box-shadow .2s}
+.tabs button:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--white);box-shadow:none}
+@media (max-width:600px){.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:calc(-1*var(--gut));margin-right:calc(-1*var(--gut));padding:0 var(--gut)}.tabs button{white-space:nowrap}}
+.panel{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;background:var(--white);border-radius:8px;padding:clamp(16px,2vw,24px)}
+.panel[hidden]{display:none}
+.panel .img{aspect-ratio:16/10;border-radius:6px;background:#dfe7ef center/cover no-repeat}
+.panel .txt{padding:8px 8px 8px 0}
+.panel .tag{display:inline-block;font-size:13px;font-weight:600;background:var(--blue);color:var(--ink);padding:5px 11px;border-radius:999px}
+.panel h3{font-size:clamp(28px,3vw,40px);font-weight:800;margin:16px 0 12px}
+.panel p{color:#3d3d40}
+.panel ul{list-style:none;display:grid;gap:9px;margin-top:18px;font-size:15px}
+.panel li{padding-left:22px;position:relative}
+.panel li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--blue)}
+.panel .fit{margin-top:22px;padding-top:16px;border-top:1px solid #e3e8ee;font-size:14px;color:var(--grey)}
+.panel .lnk{display:inline-flex;margin-top:18px;font-weight:600;border-bottom:2px solid var(--blue);padding-bottom:2px}
+@media (max-width:900px){.panel{grid-template-columns:1fr}.panel .txt{padding:4px}}
+.other{margin-top:64px;display:grid;grid-template-columns:260px 1fr;gap:24px 48px}
 .other h3{font-size:28px;font-weight:800}
 .other ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #d5dde6}
-.other li{padding:20px 20px 20px 0;border-bottom:1px solid #d5dde6}
+.other li{padding:18px 20px 18px 0;border-bottom:1px solid #d5dde6}
 .other li b{display:block;font-weight:600}
 .other li span{font-size:15px;color:var(--grey)}
 @media (max-width:980px){.other{grid-template-columns:1fr}.other ul{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.other ul{grid-template-columns:1fr}}
 
-/* numbers */
-.nums{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-d)}
-.nums div{padding:36px 24px 0 0}
-.nums div+div{padding-left:24px;border-left:1px solid var(--line-d)}
+/* ===== numbers + process ===== */
+.nums{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair)}
+.nums div{padding:34px 24px 0 0}
+.nums div+div{padding-left:24px;border-left:1px solid var(--hair)}
 .nums b{display:block;font-size:clamp(48px,6vw,88px);font-weight:800;letter-spacing:-.04em;line-height:1}
 .nums b i{font-style:normal;color:var(--blue)}
-.nums span{display:block;margin-top:12px;color:var(--mute);max-width:26ch}
-@media (max-width:760px){.nums{grid-template-columns:1fr}.nums div+div{border-left:0;padding-left:0;border-top:1px solid var(--line-d);margin-top:32px}}
-
-/* process */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:72px}
-.step{background:var(--dark2);padding:28px 26px 32px}
+.nums span{display:block;margin-top:12px;color:var(--mute);max-width:28ch}
+@media (max-width:760px){.nums{grid-template-columns:1fr}.nums div+div{border-left:0;padding-left:0;border-top:1px solid var(--hair);margin-top:30px}}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:72px}
+.step{background:var(--bg2);border:1px solid var(--hair);border-radius:8px;padding:26px 24px 30px}
 .step .n{font-size:14px;font-weight:600;color:var(--blue)}
-.step h3{font-size:22px;font-weight:600;letter-spacing:-.02em;margin:40px 0 10px}
+.step h3{font-size:21px;font-weight:600;letter-spacing:-.02em;margin:36px 0 10px}
 .step p{color:var(--mute);font-size:15px}
 @media (max-width:980px){.steps{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.steps{grid-template-columns:1fr}}
 
-/* contact */
-.contact{background:var(--blue);color:var(--ink)}
-.contact h2{font-size:clamp(48px,8vw,124px)}
-.contact h2 .dot{color:var(--ink)}
-.contact .lead{margin-top:24px;font-size:19px;max-width:48ch}
-.c-lines{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
-.c-lines a{padding:24px 24px 26px 0;display:flex;flex-direction:column;gap:6px;transition:opacity .2s}
-.c-lines a+a{padding-left:24px;border-left:1px solid rgba(14,14,14,.25)}
-.c-lines a span{font-size:14px;font-weight:500;opacity:.65}
-.c-lines a b{font-size:clamp(20px,2.2vw,28px);font-weight:600;letter-spacing:-.02em}
-.c-lines a:hover b{text-decoration:underline;text-underline-offset:5px}
-@media (max-width:820px){.c-lines{grid-template-columns:1fr}.c-lines a+a{border-left:0;padding-left:0;border-top:1px solid rgba(14,14,14,.25)}}
-footer{border-top:1px solid var(--line-d);font-size:14px;color:var(--mute)}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:26px;padding-bottom:26px}
-footer a:hover{color:var(--white)}
+/* ===== footer (kaip vjakutis.lt) ===== */
+footer{border-top:1px solid var(--hair);padding:clamp(64px,8vw,96px) 0 34px}
+footer h2{font-size:clamp(48px,6vw,84px)}
+footer .lead{margin-top:18px;color:var(--mute);font-size:18px}
+.f-main{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:40px}
+.f-list{list-style:none;display:grid;gap:16px}
+.f-list a,.f-list span{display:inline-flex;align-items:center;gap:14px;font-size:clamp(17px,1.6vw,21px)}
+.f-list svg.i{width:22px;height:22px;stroke-width:1.6;color:var(--soft)}
+.f-list a:hover{color:var(--blue)}
+.f-list .loc{color:var(--mute)}
+.soc{display:flex;gap:10px}
+.soc a{width:58px;height:58px;border-radius:8px;border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;color:var(--soft);transition:border-color .2s,color .2s,background .2s}
+.soc a svg.i{width:22px;height:22px;stroke-width:1.6}
+.soc a:hover{border-color:var(--blue);color:var(--blue)}
+.f-bot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:56px;font-size:13px;letter-spacing:.2em;color:var(--mute)}
 
-/* lightbox */
-.lb{position:fixed;inset:0;z-index:60;background:rgba(5,5,6,.96);display:none;align-items:center;justify-content:center;padding:var(--gut)}
+/* ===== lightbox ===== */
+.lb{position:fixed;inset:0;z-index:60;background:#060607;display:none;flex-direction:column}
 .lb.open{display:flex}
-.lb .frame{width:min(1280px,100%);aspect-ratio:16/9;background:#000}
-.lb iframe{width:100%;height:100%;border:0}
-.lb .x{position:absolute;top:18px;right:18px;background:none;border:0;cursor:pointer;font-weight:600;font-size:15px;padding:10px 16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
-.lb .x:hover{background:var(--white);color:var(--ink)}
-.lb .t{position:absolute;left:var(--gut);top:24px;font-weight:600}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px var(--gut)}
+.lb-top b{font-weight:600}
+.lb-top small{color:var(--mute);margin-left:10px}
+.lb-x{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:9px 14px;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.lb-x:hover{background:var(--white);color:var(--ink)}
+.lb-mid{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:16px;padding:0 var(--gut)}
+.lb-frame{width:min(1200px,100%,calc((100svh - 260px) * 16 / 9));aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;position:relative}
+.lb-frame iframe,.lb-frame img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:contain}
+.lb-nav{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;flex:none;transition:background .2s}
+.lb-nav:hover{background:var(--white);color:var(--ink)}
+.lb-nav svg.i{width:20px;height:20px}
+.lb-strip{display:flex;gap:10px;overflow-x:auto;padding:16px var(--gut) 20px;scrollbar-width:thin}
+.lb-strip button{flex:none;width:150px;aspect-ratio:16/9;border-radius:4px;overflow:hidden;position:relative;opacity:.5;transition:opacity .2s;box-shadow:inset 0 0 0 1px var(--hair);background:var(--bg2)}
+.lb-strip button img{width:100%;height:100%;object-fit:cover}
+.lb-strip button:hover{opacity:.85}
+.lb-strip button.on{opacity:1;box-shadow:0 0 0 2px var(--blue)}
+@media (max-width:700px){.lb-nav{position:absolute;bottom:130px;z-index:2;background:rgba(14,14,14,.8)}.lb-nav.p{left:16px}.lb-nav.n{right:16px}.lb-mid{padding:0}.lb-frame{border-radius:0}.lb-strip button{width:110px}}
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+</svg>
+
 <header id="hdr">
-  <div class="wrap bar">
-    <a class="logo" href="#top" aria-label="prod.lt">prod<span class="dot">.</span>lt</a>
-    <nav aria-label="Pagrindinė">
-      <a href="#darbai">Darbai</a>
-      <a href="#paslaugos">Paslaugos</a>
-      <a href="#procesas">Kaip dirbame</a>
-      <a href="#kontaktai">Kontaktai</a>
-    </nav>
-    <a class="btn" href="#kontaktai">Aptarti projektą</a>
+  <div class="wrap">
+    <div class="h1row">
+      <a class="logo" href="#top" aria-label="prod.lt, į pradžią">prod<span class="dot">.</span>lt</a>
+      <div class="contacts">
+        <a href="tel:+37068538288" aria-label="Skambinti +370 685 38288"><svg class="i"><use href="#i-phone"/></svg><span>+370 685 38288</span></a>
+        <a href="mailto:vjakutis@gmail.com" aria-label="Rašyti vjakutis@gmail.com"><svg class="i"><use href="#i-mail"/></svg><span>vjakutis@gmail.com</span></a>
+        <a class="wa" href="https://wa.me/37068538288" aria-label="Rašyti per WhatsApp"><svg class="i"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+      </div>
+    </div>
+    <div class="h2row">
+      <nav aria-label="Pagrindinė">
+        <a href="#projektai">Projektai</a>
+        <a href="#paslaugos">Paslaugos</a>
+        <a href="#procesas">Kaip dirbame</a>
+        <a href="#kontaktai">Kontaktai</a>
+      </nav>
+    </div>
   </div>
 </header>
 
 <main id="top">
   <section class="hero" style="padding:0">
-    <div class="hero-media" style="background-image:url('https://i.vimeocdn.com/video/1742440840-327eead575bb4af861d130fd4ca4f3a83cceb2f331adc95c290542f83f023011-d_1280x720')">
-      <iframe src="https://player.vimeo.com/video/877081624?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;dnt=1" title="Fono video" allow="autoplay; fullscreen" tabindex="-1" aria-hidden="true"></iframe>
-    </div>
+    <div class="hero-media" id="heroMedia"></div>
     <div class="wrap hero-in">
-      <h1 class="reveal">Video reklamos su filmavimu ir DI<span class="dot">.</span></h1>
-      <p class="sub reveal d2">Prodiusuoju reklamas nuo idėjos iki ekrano: klasikinius filmavimus, filmavimus su DI elementais ir reklamas, sukurtas vien su DI. 14 metų patirtis su tarptautiniais ir Lietuvos prekių ženklais.</p>
-      <div class="hero-foot reveal d3">
+      <h1 class="reveal">Video reklamų gamyba<span class="dot">.</span></h1>
+      <p class="claim reveal d2"><em>Su dirbtiniu intelektu (DI)</em> arba filmuojant.</p>
+      <p class="sub reveal d3">Prodiusuoju reklamas nuo idėjos iki ekrano jau 14 metų. Dirbu su atrinktais DI kūrėjais, kurie kino lygio vaizdą sukuria greičiau ir be filmavimo aikštelės, o kai reikia tikrų žmonių ir produkto, organizuoju filmavimą. Visam projektui turite vieną kontaktą.</p>
+      <div class="hero-foot reveal d4">
         <div class="ctas">
           <a class="btn" href="#kontaktai">Aptarti projektą</a>
-          <a class="btn line" href="#darbai">Žiūrėti darbus</a>
+          <a class="btn line" href="#projektai">Žiūrėti projektus</a>
         </div>
-        <button class="reel-btn" data-src="https://player.vimeo.com/video/877081624?autoplay=1" data-title="Cetelem – Frozen"><span class="pl"></span>Žiūrėti su garsu</button>
+        <button class="reel" id="reelBtn"><span class="pl"><svg><use href="#i-play"/></svg></span><span><b>Žiūrėti su garsu</b><small id="heroNow">&nbsp;</small></span></button>
       </div>
     </div>
   </section>
 
-  <div class="brands" aria-label="Prekių ženklai, kuriems kūriau reklamas">
-    <div class="wrap label">Prekių ženklai, kuriems kūriau reklamas</div>
+  <div class="brands" aria-label="Prekės ženklai, su kuriais dirbau">
+    <div class="wrap label">Prekės ženklai, su kuriais dirbau</div>
     <div class="marquee" aria-hidden="true" id="mq"></div>
   </div>
 
-  <section id="darbai">
+  <section id="projektai">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Darbai<span class="dot">.</span></h2>
-        <p>Reklamos, kurias prodiusavau filmavimo aikštelėje ir kurias sukūrėme su DI. Slinkite į šoną, kad pamatytumėte daugiau.</p>
+        <h2>Įgyvendinti projektai<span class="dot">.</span></h2>
+        <p>Reklamos, sukurtos su DI, ir reklamos, kurias prodiusavau filmavimo aikštelėje. Slinkite į šoną, kad pamatytumėte daugiau.</p>
       </div>
       <div id="rows"></div>
     </div>
@@ -232,51 +293,79 @@ footer a:hover{color:var(--white)}
     <div class="wrap">
       <div class="sec-head">
         <h2>Ką galite užsakyti<span class="dot">.</span></h2>
-        <p>Gamybos būdą parenkame pagal idėją, biudžetą ir terminą. Visais atvejais turite vieną žmogų, kuris atsako už visą projektą.</p>
+        <p>Gamybos būdą parenkame pagal idėją, biudžetą ir terminą. Dažniausiai pradedame nuo DI, nes tai greičiausias kelias iki kino lygio vaizdo, o filmavimą pasirenkame tada, kai jo tikrai reikia. Visais atvejais turite vieną žmogų, kuris atsako už visą projektą.</p>
       </div>
-      <div class="svc">
-        <article>
-          <div class="img" style="background-image:url('https://i.vimeocdn.com/video/1300208619-620888cdd0e4db9e585a62ba43d8ef99cf24569492d5f7b0b_1280x720')"><span class="tag">Filmavimas</span></div>
-          <div class="body">
-            <h3>Filmuota reklama</h3>
-            <p>Klasikinė reklamos gamyba su režisieriumi, operatoriumi, aktoriais ir lokacijomis.</p>
-            <ul>
-              <li>Režisieriaus ir komandos paieška</li>
-              <li>Kastingas, lokacijos, leidimai</li>
-              <li>Filmavimo dienos ir postprodukcija</li>
-              <li>Versijos TV, internetui ir socialiniams tinklams</li>
-            </ul>
-            <p class="fit">Tinka, kai svarbūs tikri žmonės, produktas ir emocija.</p>
-          </div>
-        </article>
-        <article>
-          <div class="img" style="background-image:url('https://i.vimeocdn.com/video/2025863845-3f8bcf2b628593b0094116e552f0af72d9cdc68c051998b454f7134f4016a44d-d_1280x720')"><span class="tag">Filmavimas + DI</span></div>
-          <div class="body">
-            <h3>Mišri gamyba</h3>
-            <p>Filmuojame tai, kas turi būti tikra, o DI sukuria aplinkas, sezonus ir pasaulius, kurių nufilmuoti neįmanoma ar per brangu.</p>
-            <ul>
-              <li>Filmuoti žmonės ir produktas</li>
-              <li>DI ir 3D aplinkos, efektai, transformacijos</li>
-              <li>Mažiau filmavimo dienų ir lokacijų</li>
-              <li>Lengviau daryti versijas skirtingoms rinkoms</li>
-            </ul>
-            <p class="fit">Tinka dideliam vaizdui su protingesniu biudžetu.</p>
-          </div>
-        </article>
-        <article>
-          <div class="img" style="background-image:url('https://drive.google.com/thumbnail?id=1BVBAgtcnIwnqU_ZGygODvp-iBxLw7T6f&amp;sz=w1280')"><span class="tag">Tik DI</span></div>
-          <div class="body">
-            <h3>Reklama, sukurta su DI</h3>
-            <p>Visas vaizdas sukuriamas su DI įrankiais. Dirbu su atrinktais DI kūrėjais ir režisieriais iš Lietuvos ir užsienio.</p>
-            <ul>
-              <li>Scenarijus, stilius ir kadrų planas</li>
-              <li>Vaizdo ir video generavimas</li>
-              <li>Montažas, garsas, spalvų korekcija</li>
-              <li>Greitos versijos ir adaptacijos</li>
-            </ul>
-            <p class="fit">Tinka, kai reikia greitai ir be filmavimo aikštelės.</p>
-          </div>
-        </article>
+
+      <div class="tabs" role="tablist" aria-label="Paslaugos">
+        <button role="tab" id="t-di" aria-controls="p-di" aria-selected="true">Reklama su DI</button>
+        <button role="tab" id="t-mix" aria-controls="p-mix" aria-selected="false" tabindex="-1">Mišri gamyba</button>
+        <button role="tab" id="t-film" aria-controls="p-film" aria-selected="false" tabindex="-1">Filmuota reklama</button>
+        <button role="tab" id="t-ev" aria-controls="p-ev" aria-selected="false" tabindex="-1">Video renginiams</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-di" aria-labelledby="t-di">
+        <div class="img" style="background-image:url('https://drive.google.com/thumbnail?id=1xX3JUjUitZRBq8HdbqAwawj8N0hku7VT&amp;sz=w1600')" role="img" aria-label="Kadras iš reklamos, sukurtos su DI"></div>
+        <div class="txt">
+          <span class="tag">Tik DI</span>
+          <h3>Reklama, sukurta su DI</h3>
+          <p>Visas vaizdas sukuriamas su DI įrankiais. Dirbu su atrinktais DI kūrėjais ir režisieriais, todėl kūrėją parenku pagal jūsų idėjos stilių ir žanrą.</p>
+          <ul>
+            <li>Scenarijus, stilius ir kadrų planas</li>
+            <li>Kadrų pavyzdžiai prieš pradedant gamybą</li>
+            <li>Video generavimas, montažas, garsas ir spalva</li>
+            <li>Versijos skirtingiems formatams ir rinkoms</li>
+          </ul>
+          <p class="fit">Tinka, kai reikia kino lygio vaizdo greitai ir be filmavimo aikštelės.</p>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-mix" aria-labelledby="t-mix" hidden>
+        <div class="img" style="background-image:url('https://drive.google.com/thumbnail?id=1rRfnD1aDsgheNadlzBSfQP1vqLt8xbcq&amp;sz=w1600')" role="img" aria-label="Mišrios gamybos pavyzdys"></div>
+        <div class="txt">
+          <span class="tag">Filmavimas + DI</span>
+          <h3>Mišri gamyba</h3>
+          <p>Filmuojame tai, kas turi būti tikra, o DI sukuria aplinkas, sezonus ir pasaulius, kurių nufilmuoti neįmanoma ar per brangu.</p>
+          <ul>
+            <li>Filmuoti žmonės ir produktas</li>
+            <li>DI aplinkos, efektai ir transformacijos</li>
+            <li>Mažiau filmavimo dienų ir lokacijų</li>
+            <li>Lengviau daryti versijas skirtingoms rinkoms</li>
+          </ul>
+          <p class="fit">Tinka dideliam vaizdui su protingesniu biudžetu.</p>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-film" aria-labelledby="t-film" hidden>
+        <div class="img" style="background-image:url('https://i.vimeocdn.com/video/1300208619-620888cdd0e4db9e585a62ba43d8ef99cf24569492d5f7b0b_1280x720')" role="img" aria-label="Kadras iš filmuotos reklamos"></div>
+        <div class="txt">
+          <span class="tag">Filmavimas</span>
+          <h3>Filmuota reklama</h3>
+          <p>Klasikinė reklamos gamyba su režisieriumi, operatoriumi, aktoriais ir lokacijomis. Tokių reklamų prodiusavau daugiau nei 200.</p>
+          <ul>
+            <li>Režisieriaus ir komandos paieška</li>
+            <li>Kastingas, lokacijos, leidimai</li>
+            <li>Filmavimo dienos ir postprodukcija</li>
+            <li>Versijos TV, internetui ir socialiniams tinklams</li>
+          </ul>
+          <p class="fit">Tinka, kai svarbūs tikri žmonės, produktas ir emocija.</p>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-ev" aria-labelledby="t-ev" hidden>
+        <div class="img" style="background-image:url('https://drive.google.com/thumbnail?id=1473A4TNDih5JgJxKFgGM_3EZGOd8blia&amp;sz=w1600')" role="img" aria-label="Kadras iš DI video"></div>
+        <div class="txt">
+          <span class="tag">DI video renginiams</span>
+          <h3>Vaizdai, kurių visada norėjote renginiui</h3>
+          <p>Su DI galima sukurti tai, ko anksčiau renginiui nebūtų leidęs biudžetas ar laikas.</p>
+          <ul>
+            <li>Vaizdas ekranams renginio metu: atidarymui, scenos fonui, pertraukoms</li>
+            <li>Reklaminis video prieš renginį: bilietams, registracijai, anonsui</li>
+            <li>Atskiras video rėmėjui, partneriui ar nominacijai</li>
+            <li>Kadrai, kurių nufilmuoti nepavyktų: mastelis, minia, kitos epochos</li>
+            <li>Trumpesnės ir vertikalios versijos kitiems kanalams</li>
+          </ul>
+          <a class="lnk" href="https://renginiai.prod.lt" target="_blank" rel="noopener">Pristatymas renginių organizatoriams</a>
+        </div>
       </div>
 
       <div class="other">
@@ -285,9 +374,9 @@ footer a:hover{color:var(--white)}
           <li><b>Service producing</b><span>Biudžetai, komandos ir grafikai užsienio produkcijoms Lietuvoje</span></li>
           <li><b>Vietinė produkcija</b><span>Pilnas filmavimų organizavimas Lietuvoje</span></li>
           <li><b>Filmai ir TV serialai</b><span>Ilgo formato produkcija</span></li>
-          <li><b>Komercinė fotografija</b><span>Foto sesijų produkcija</span></li>
           <li><b>Renginių produkcija</b><span>Gyvi ir prekių ženklų renginiai</span></li>
           <li><b>Fixing paslaugos</b><span>Vietinė logistika, leidimai, prieigos</span></li>
+          <li><b>Fotografijos prodiusavimas</b><span>Reklaminių foto sesijų produkcija</span></li>
         </ul>
       </div>
     </div>
@@ -296,145 +385,298 @@ footer a:hover{color:var(--white)}
   <section id="procesas">
     <div class="wrap">
       <div class="nums">
-        <div><b>14<i>+</i></b><span>metų reklamos gamyboje</span></div>
-        <div><b>50<i>+</i></b><span>prodiusuotų reklamų</span></div>
+        <div><b>14<i>+</i></b><span>metų reklamos ir kino produkcijoje</span></div>
+        <div><b>200<i>+</i></b><span>prodiusuotų reklamų</span></div>
         <div><b>1</b><span>kontaktas visam projektui, nuo sąmatos iki pridavimo</span></div>
       </div>
       <div class="steps">
-        <div class="step"><span class="n">01</span><h3>Brief'as</h3><p>Papasakojate, ką reikia pasakyti, kam ir kada. Užtenka kelių sakinių ar trumpo skambučio.</p></div>
-        <div class="step"><span class="n">02</span><h3>Sąmata ir planas</h3><p>Pasiūlau gamybos būdą, komandą, terminus ir išsamią sąmatą. Jei tinka keli keliai, parodau kelis scenarijus.</p></div>
-        <div class="step"><span class="n">03</span><h3>Gamyba</h3><p>Organizuoju filmavimą ar DI gamybą. Tarpinius rezultatus matote ir tvirtinate eigoje.</p></div>
-        <div class="step"><span class="n">04</span><h3>Pridavimas</h3><p>Galutinės versijos visiems kanalams ir formatams, su sutartais korekcijų ratais.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="kontaktai" class="contact">
-    <div class="wrap">
-      <h2>Turite projektą<span class="dot">?</span></h2>
-      <p class="lead">Parašykite ar paskambinkite. Mielai susitiksiu gyvai ir parodysiu daugiau darbų, taip pat su DI kurtų reklamų.</p>
-      <div class="c-lines">
-        <a href="tel:+37068538288"><span>Skambinti</span><b>+370 685 38288</b></a>
-        <a href="mailto:vjakutis@gmail.com?subject=Video%20reklama"><span>Rašyti</span><b>vjakutis@gmail.com</b></a>
-        <a href="https://wa.me/37068538288"><span>Žinutė</span><b>WhatsApp</b></a>
+        <div class="step"><span class="n">01</span><h3>Pokalbis ir idėja</h3><p>Papasakojate, ką reikia pasakyti, kam ir kada. Pasakau, ar verta kurti su DI, ar filmuoti.</p></div>
+        <div class="step"><span class="n">02</span><h3>Sąmata ir planas</h3><p>Komanda, terminai ir išsami sąmata. Jei tinka keli keliai, parodau kelis scenarijus.</p></div>
+        <div class="step"><span class="n">03</span><h3>Gamyba</h3><p>Kadrų pavyzdžius ir tarpinius rezultatus matote ir tvirtinate eigoje.</p></div>
+        <div class="step"><span class="n">04</span><h3>Pridavimas</h3><p>Garsas, spalva ir galutinės versijos visiems kanalams, su sutartais korekcijų ratais.</p></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
+<footer id="kontaktai">
   <div class="wrap">
-    <span>© 2026 prod.lt – Vytautas Jakutis, reklamos prodiuseris, Vilnius</span>
-    <a href="https://vjakutis.lt">Portfolio: vjakutis.lt</a>
+    <h2>Pakalbėkime<span class="dot">.</span></h2>
+    <p class="lead">Per vieną pokalbį pasakysiu, kaip geriausia įgyvendinti jūsų idėją, kiek tai maždaug kainuos ir per kiek laiko turėsite rezultatą.</p>
+    <div class="f-main">
+      <ul class="f-list">
+        <li><a href="tel:+37068538288"><svg class="i"><use href="#i-phone"/></svg>+370 685 38288</a></li>
+        <li><a href="mailto:vjakutis@gmail.com?subject=Video%20reklama"><svg class="i"><use href="#i-mail"/></svg>vjakutis@gmail.com</a></li>
+        <li><span class="loc"><svg class="i"><use href="#i-pin"/></svg>Vilnius, Lietuva</span></li>
+      </ul>
+      <div class="soc">
+        <a href="https://www.instagram.com/vjakutis/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i"><use href="#i-ig"/></svg></a>
+        <a href="https://www.facebook.com/vjakutis" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i"><use href="#i-fb"/></svg></a>
+        <a href="https://wa.me/37068538288" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i"><use href="#i-wa"/></svg></a>
+        <a href="https://www.linkedin.com/in/vjakutis" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i"><use href="#i-in"/></svg></a>
+      </div>
+    </div>
+    <div class="f-bot"><span>© 2026 VYTAUTAS JAKUTIS</span><span>PRODIUSERIS</span></div>
   </div>
 </footer>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video">
-  <span class="t" id="lbt"></span>
-  <button class="x" id="lbx">Uždaryti</button>
-  <div class="frame"><iframe id="lbf" title="Video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video peržiūra">
+  <div class="lb-top"><div><b id="lbT"></b><small id="lbN"></small></div><button class="lb-x" id="lbX"><svg class="i"><use href="#i-x"/></svg>Uždaryti</button></div>
+  <div class="lb-mid">
+    <button class="lb-nav p" id="lbP" aria-label="Ankstesnis"><svg class="i"><use href="#i-l"/></svg></button>
+    <div class="lb-frame" id="lbF"></div>
+    <button class="lb-nav n" id="lbNx" aria-label="Kitas"><svg class="i"><use href="#i-r"/></svg></button>
+  </div>
+  <div class="lb-strip" id="lbS"></div>
 </div>
 
+<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
-/* ===== Turinys: čia pridėti / keisti darbus =====
-   v = Vimeo ID, yt = YouTube ID, drive = Google Drive failo ID
-   th = miniatiūra (nebūtina Vimeo darbams – paimama automatiškai) */
-const BRANDS=["Kinder","Yamaha","Coca-Cola","Mercedes-Benz","Renault","Swatch","Ariel","ALDI","Cetelem","Vinted","Maxima","Bitė","Barbora","Tele2"];
-const V="https://i.vimeocdn.com/video/";
-const ROWS=[
-  {title:"Tarptautinės reklamos", note:"service producer", items:[
-    {t:"Cetelem",s:"Frozen",v:"877081624",th:V+"1742440840-327eead575bb4af861d130fd4ca4f3a83cceb2f331adc95c290542f83f023011-d_1280x720"},
-    {t:"Yamaha",s:"MT-10",v:"646000035",th:V+"1300208619-620888cdd0e4db9e585a62ba43d8ef99cf24569492d5f7b0b_1280x720"},
-    {t:"Malakoff Humanis",s:"Contraphobe",v:"1092717238",th:V+"2025863845-3f8bcf2b628593b0094116e552f0af72d9cdc68c051998b454f7134f4016a44d-d_1280x720"}
-  ]},
-  {title:"Reklamos regiono rinkoms", note:"line producer", items:[
-    {t:"Koronet Brown",s:"",v:"272928412",th:V+"731181884-06df73919d504f76885501d02747067ebfa0ba2ee3e2006eb00fb8cec457e24f-d_1280x720"},
-    {t:"Zlatý Bažant",s:"Follow the taste – Architect",v:"263851965",th:V+"731182648-7a65a6eb95da483095ced249dd0cd25bbeb5fb008dff4679d47831ae3ff743b8-d_1280x720"},
-    {t:"Zlatý Bažant",s:"Follow the taste – Barbershop",v:"263851963",th:V+"731182154-edb2c640c7277fbdf81b128e8a287537dfcc9138ae60ab36912208d1f2bdddd6-d_1280x720"},
-    {t:"Norge",s:"",v:"236552692",th:V+"731183085-b5ed24b4a16ca60657bf0c034ff4804d0280d289419ebdc576c94cfe70b470bd-d_1280x720"},
-    {t:"Kufar",s:"Prison",v:"236552685",th:V+"731183252-f9e3f7925ffdacbe735ec713e97c59dbafed9bc4112859461e494979cef1df2a-d_1280x720"},
-    {t:"Kufar",s:"Robbery",v:"182357088",th:V+"591219752-db406bb3af9a72c27ed5b193bf902c40a962919b2144ecd1618f23069e0fb279-d_1280x720"},
-    {t:"Kufar",s:"Couple",v:"182356181",th:V+"591218698-4b4143e3793b0949247202128bd38e4e579d608519cabafb49e248b1b4e7a838-d_1280x720"},
-    {t:"MTS",s:"Internet Abroad",v:"173782291"},
-    {t:"AURA",s:"Geriamasis vanduo",v:"170756661"},
-    {t:"Jattis",s:"Ledai",v:"123724756"},
-    {t:"MTS",s:"Morning",v:"108106676"},
-    {t:"MTS",s:"Little issues",v:"104015159"}
-  ]},
-  {title:"Sukurta su DI", note:"be filmavimo", ai:true, items:[
-    {t:"DI reklama 1",s:"Tik DI",drive:"1BVBAgtcnIwnqU_ZGygODvp-iBxLw7T6f"},
-    {t:"DI reklama 2",s:"Tik DI",drive:"1A0d-5TFf_mhjOJY_e3damOmKKljXKLXP"},
-    {t:"DI reklama 3",s:"Tik DI",drive:"1zGTET_3hY6d0WrSrMNzye2FY8Ffw5iIs"}
-  ]},
-  {title:"Muzikiniai klipai ir kinas", note:"", items:[
-    {t:"Indochine",s:"Le chant des cygnes",yt:"ZAmOCXgc76U"},
-    {t:"NONEXISTER",s:"How Do You Dare",yt:"EJgqqUKH_9Q"},
-    {t:"Alike",s:"Trumpametražio filmo anonsas",v:"1152209056",th:"https://vjakutis.lt/alike.jpg"}
-  ]}
+/* ================== TURINYS ==================
+   v = Vimeo ID, th = Vimeo miniatiūros kodas
+   drive = Google Drive failo ID (failas turi būti viešas: „Anyone with the link“)
+   yt = YouTube ID, img = paveikslėlis, link = nuoroda
+   Norint pridėti darbą: įrašyti naują eilutę į atitinkamą sąrašą. */
+const BRANDS=["Kinder","Coca-Cola","Mercedes-Benz","Renault","Yamaha","Swatch","Ariel","ALDI","Cetelem","Swissquote","Vinted","Maxima","Bitė","Barbora","Tele2","Žaliasis taškas","Zlatý Bažant","Parimatch"];
+
+const DI=[
+  {t:"Tefal – 70 metų inovacijų",drive:"1ZnmJATLs0vYiZXprsbiYRwEIh7M_WIWX"},
+  {t:"Reklaminis video",drive:"1oOC496Vk9r7Hfd49oER1mZpvEFns6y0V"},
+  {t:"Mastergood – Chef",drive:"1zGTET_3hY6d0WrSrMNzye2FY8Ffw5iIs"},
+  {t:"SEEF",drive:"1RT83R-_slnxypUIy0PqkFTmFngu11A5U"},
+  {t:"XPENG G9",drive:"1IM_9zONr-TO06ALCXe3FtA-wq_9kdb1P"},
+  {t:"Glance – AI Shopping Agent",drive:"1fY19X-pQX5-Q0fWTdd7PDNGjqJe_VXDB"},
+  {t:"Abou Majas",drive:"1MOlJN8F2bM8pPDYAhAFGW9y5h_eHgJs6"},
+  {t:"Vasara",drive:"1A0d-5TFf_mhjOJY_e3damOmKKljXKLXP"},
+  {t:"Pergalė – 1410",drive:"1473A4TNDih5JgJxKFgGM_3EZGOd8blia"},
+  {t:"Volfas Engelman – darbo skelbimas",drive:"1tSqrDPEERFg2rT83IsZQtfcCkEy9le01"}
 ];
 
-/* ===== Žemiau – logika ===== */
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-document.getElementById('mq').innerHTML=[...BRANDS,...BRANDS].map(b=>`<span>${esc(b)}</span>`).join('');
+const SVC=[
+  ["CETELEM – Frozen","877081624","1742440840-327eead575bb4af861d130fd4ca4f3a83cceb2f331adc95c290542f83f023011-d"],
+  ["YAMAHA – MT-10","646000035","1300208619-620888cdd0e4db9e585a62ba43d8ef99cf24569492d5f7b0b"],
+  ["Malakoff Humanis – Contraphobe","1092717238","2025863845-3f8bcf2b628593b0094116e552f0af72d9cdc68c051998b454f7134f4016a44d-d"],
+  ["APO","846861630","1699960994-a6a66ef024aaae101f167f6b8b1265aca76ae837693609db9c0bb432466cb320-d"],
+  ["SYNC","995765973","1911882067-d15223e188c437a47476adb3aecf994e1d4f22beec27e07e827955ceda3eb412-d"],
+  ["Coca-Cola 2024","949818000","1857948103-50a80ae97a895223636db866769fc6c74003e31aa560d1dd1708687abbce1e59-d"],
+  ["KINDER BUENO – Agent Secret","315875062","757755683-d4cb4a8be189ea11ddc50558b1dc24c9337a49325d221f1c7219f0a445433728-d"],
+  ["KINDER BUENO – La Recrue","299401846","737519137-0af1f5ef20ce9e3b9f384a6370ed106f2c8cbf197ec1bff3c7b6ea7eb9a834d6-d"],
+  ["KINDER BUENO – La Maison","299401882","737519187-7d9af516a85b24659f2eb12f900fbea1f6c00fbadd4174afdc84b675a7c8cd7d-d"],
+  ["RENAULT – Comissariat","332175608","777810502-1c019d7a8468b24492948fbdde77e7f6d03d8a9f225848cf4ceb7adb82ef716e-d"],
+  ["Fédération Française de Cardiologie","1069952597","1998383982-379462a89415a788dcf84da2dea64c63267e8b598cd4a28c32f5020d9c044084-d"],
+  ["Ariel","1058604609","1984796100-7fb1c56a709ed81299558b5f5c2fad23781e857de542a6db462d2376cc6dcf93-d"],
+  ["Heineken – Bar Dating","1076690398","2006536428-6b426028027f15041ebf0b9ff4563e50906e991538837b389f1c68c86f85953d-d"],
+  ["ALDI – XMAS","1154015575","2106173666-0b9ee9e4ecf80f63e01cc36e8c5cc34df1592a693943875f10ff71cdd97a213e-d"],
+  ["MERCEDES-BENZ – Holiday Heroes","389246043","852844034-3c0402166c44cdd5024983313cec3d0d6b3be81ebc308945a96bdeb1c9ee8db3-d"],
+  ["SWATCH – Office","495980225","1026112466-98315554ce6a9bef34430c91fa76546a41d5f5c55777725b985dc15154f35233-d"],
+  ["SWISSQUOTE","771473146","1548364002-bcf92f5ca14fafbae5bde74b617b8b2152da568a7dc8f91351df81a6f4ff7e96-d"],
+  ["NONEXISTER – How Do You Dare","867830786","1728733026-9daa6f506ba7236ce88dce4189a26c5448d3ac9053cecf813f42e5f7219a4abf-d"],
+  ["KINDER (DC)","906300660","1788026233-f7a0e8096969159b9dae3116177eb4558309ca372041dfb1fa72a3523166203a-d"],
+  ["Revillon","906357950","1788108777-382dc9af6eb99872d03d699de1891ed769e104e737344d244704831068dc5956-d"],
+  ["CETELEM – Massage","907412276","1789880021-8b8383decd0ef89ba37b1675d165ab37cbc66f87028e1a84e3ae3f955dd8a8ca-d"]
+];
 
-function src(it){
-  if(it.v) return `https://player.vimeo.com/video/${it.v}?autoplay=1&dnt=1`;
-  if(it.yt) return `https://www.youtube-nocookie.com/embed/${it.yt}?autoplay=1`;
-  if(it.drive) return `https://drive.google.com/file/d/${it.drive}/preview`;
-}
-function thumb(it){
-  if(it.th) return it.th;
+const LOC=[
+  ["Barbora","1023919677","1943170044-1fd3eed2f8e0fc42f4db6667c5ab531606fcb26c6ad8a1f5c1dec8d27672f18e-d"],
+  ["Žaliasis taškas","938532777","1839945854-036e9e8994fa73c15b63530e20a7b4c9b5e8219e41ebbf60881bc354084834ee-d"],
+  ["Tele2 Verslui","1094966405","2028660349-b9b2d3f81d6e85e1da5687ffea16db63b5dc3ef531268783db99a4b4cec9c0ae-d"],
+  ["MAXIMA – Ačiū","315609036","757423645-5e45e3bc1cc55378b7ccd3fbd489449165e63182a7ab27e8bca87b58121df2a4-d"],
+  ["Vinted – The Difference (Anna) SK","705640400","1424670940-79f935853d63352bba74a166572c917f6a653829db9eb3a86403cf88004d9ee2-d"],
+  ["Møller's – Everyday Marathon","904197769","1784682803-8d72b9145d5d710cccb0c624ae8dd0d37eddb10e0ae421066a4f65976440c5bb-d"],
+  ["Niekieno vaikai","486337666","1006721272-03a4519a6323aa4e9c7d3e092a279b72b111d4123a4ee789fc93f49bcd9ec037-d"],
+  ["EŽYS – Karate","305003844","744403379-0b634d0677507e7b1fb5f82306c0c1c94da0621eeaecc047680a2b1fe1e7afa2-d"],
+  ["EŽYS – Mexico","305004165","744402545-54c7d464307b3b30b521a248be124fefa13bdb8072fbecf52fd27bbec39bf69b-d"],
+  ["EŽYS – Šuolis","305004264","744401973-1f15ff5ada56950a62e44d02be116be43aa2fe15a819e28fa8bac6fab1e648ee-d"],
+  ["Parimatch","904003774","1784396065-c229dc91d922e53c70671aa916cd6a305bfb2b261c489a3e0af290fa240d9e7d-d"],
+  ["BITĖ – Image 2019","333081203","778958763-bb5690888b2eb4c10cd5ccb58f124137cfcbf74daf6268ae13182d65af08350f-d"],
+  ["BITĖ – Nauji planai","338637779","786407834-b7b235d0f37663f4babdec5df48ac18d5587b728a2e009966d60e9b2be436855-d"],
+  ["BITĖ – Namų internetas","370056967","827181723-41dd210f5b57e78a02c500b9bbd9c64d682d40cef9e56f5b634eeff0bf3ece2f-d"],
+  ["Vinted – Decluttering Time","505158502","1045372367-1af62d43a5e2b5e500c0b3b65b5dc35f4902fc0045b3ce432fed962951f8ca00-d"],
+  ["Vinted – The Difference (Lenka) SK","705641406","1424672323-3dd8dbbe05bf60632fc686becae956765a9de6fa16aeb4f51d3b4da3346a69bb-d"],
+  ["Vinted – Dress For Your Self","505154836","1045366556-ec747cd0e1da9ae08f46bcf01ef8b1fa7d3e2d2f4e6e5d5e548caa3475ed0dc2-d"],
+  ["Vinted – The Difference (Ema & Marek) CZ","704095010","1421977599-a5a4425182a40c24bf2c3ea316b118e3b00b509b11e64daf52f63a64b72b02c2-d"],
+  ["Zolotaja Kruzhka","277055565","731181686-7bf98ce05bc40a107f55efe7b678b68e349544c573ca131c22d79a71f7d0c197-d"],
+  ["Koronet Brown","272928412","731181884-06df73919d504f76885501d02747067ebfa0ba2ee3e2006eb00fb8cec457e24f-d"],
+  ["Zlatý Bažant – Architect","263851965","731182648-7a65a6eb95da483095ced249dd0cd25bbeb5fb008dff4679d47831ae3ff743b8-d"],
+  ["Zlatý Bažant – Barbershop","263851963","731182154-edb2c640c7277fbdf81b128e8a287537dfcc9138ae60ab36912208d1f2bdddd6-d"],
+  ["Norge","236552692","731183085-b5ed24b4a16ca60657bf0c034ff4804d0280d289419ebdc576c94cfe70b470bd-d"],
+  ["Kufar – Prison","236552685","731183252-f9e3f7925ffdacbe735ec713e97c59dbafed9bc4112859461e494979cef1df2a-d"],
+  ["Kufar – Robbery","182357088","591219752-db406bb3af9a72c27ed5b193bf902c40a962919b2144ecd1618f23069e0fb279-d"],
+  ["Kufar – Couple","182356181","591218698-4b4143e3793b0949247202128bd38e4e579d608519cabafb49e248b1b4e7a838-d"],
+  ["MTS – Internet Abroad","173782291","731184182-9e06648d00beaef21f603cdfa0513af6d768e9594a04ea06246507d40eb27119-d"],
+  ["AURA – geriamasis vanduo","170756661","575939150-8939cc6ae860714b889cc86a5772528b854b89b62d055d30b2d6a4803776e465-d"],
+  ["Jattis – ledai","123724756","513170423-00e0fab1b1331d55c406edd99c831e71f8917819b47ad1c84780297bef8b4811-d"],
+  ["MTS – Morning (director's cut)","108106676","491711758-8754fc0de68d2d3a08680a2491912c0bf271735eab4484719aeee9afb1c46ff1-d"],
+  ["MTS – Little Issues (production cut)","104015159","489346061-7866103ce3c71ec9f5cb959e39e38423b6c47a9a42831fc1bf04e90764652798-d"]
+];
+
+const MUSIC=[
+  {t:"Indochine – Le chant des cygnes",yt:"ZAmOCXgc76U"},
+  {t:"NONEXISTER – How Do You Dare",yt:"EJgqqUKH_9Q"},
+  {t:"Alike – trumpametražio filmo anonsas",v:"1152209056",img:"https://vjakutis.lt/alike.jpg"}
+];
+
+const PHOTO=[
+  {t:"Hyundai – David Daub",img:"https://magic.film/wp-content/uploads/2026/02/32_EVO_Lifestyle_IONIQ-9_LS_ExteriorFront-_RGB-aspect-ratio-1920-1080.jpg",link:"https://magic.film/project/hyundaidavid-daub/"},
+  {t:"Yamaha",img:"https://magic.film/wp-content/uploads/2024/07/film-service-2022-yamaha-mt10-eu-cyan-storm-action-001-03.jpg",link:"https://magic.film/project/yamaha/"},
+  {t:"Swatch – My Gosh",img:"https://magic.film/wp-content/uploads/2024/07/sc01-20-bb-chrono-some-office-4x5-02-original-scaled-1-aspect-ratio-1920-1080.jpg",link:"https://magic.film/project/swatch-my-gosh/"},
+  {t:"PostFinance – Endlich Erwachsen",img:"https://magic.film/wp-content/uploads/2024/07/photos-post-finance002.jpg",link:"https://magic.film/project/post-finance-endlicherwachsen/"}
+];
+
+const OTHER_CO="Darbai sukurti dirbant kitose prodiuserinėse kompanijose";
+const ROWS=[
+  {title:"Sukurta su DI",note:"Pavaizduoti darbai sukurti mano atstovaujamų DI kūrėjų",items:DI},
+  {title:"Tarptautinės reklamos",note:OTHER_CO,more:"https://vimeo.com/showcase/12219750",items:SVC.map(([t,v,th])=>({t,v,th}))},
+  {title:"Vietinė produkcija",note:OTHER_CO,more:"https://vimeo.com/showcase/12219785",items:LOC.map(([t,v,th])=>({t,v,th}))},
+  {title:"Muzikiniai klipai ir kinas",note:OTHER_CO,items:MUSIC},
+  {title:"Fotografijos prodiusavimas",note:OTHER_CO,items:PHOTO,photo:true}
+];
+const HERO=ROWS[1].items.slice(0,12);
+
+/* ================== LOGIKA ================== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function thumb(it,w){
+  w=w||960;
+  if(it.img) return it.img;
+  if(it.th) return `https://i.vimeocdn.com/video/${it.th}_${w}x${Math.round(w*9/16)}`;
   if(it.yt) return `https://i.ytimg.com/vi/${it.yt}/hqdefault.jpg`;
-  if(it.drive) return `https://drive.google.com/thumbnail?id=${it.drive}&sz=w1280`;
+  if(it.drive) return `https://drive.google.com/thumbnail?id=${it.drive}&sz=w${w}`;
   return "";
 }
-const arrow=d=>`<svg viewBox="0 0 24 24"><path d="${d?'M9 5l7 7-7 7':'M15 5l-7 7 7 7'}"/></svg>`;
-document.getElementById('rows').innerHTML=ROWS.map((r,i)=>`
+function embed(it){
+  if(it.v) return `https://player.vimeo.com/video/${it.v}?autoplay=1&dnt=1&title=0&byline=0&portrait=0`;
+  if(it.yt) return `https://www.youtube-nocookie.com/embed/${it.yt}?autoplay=1&rel=0`;
+  if(it.drive) return `https://drive.google.com/file/d/${it.drive}/preview`;
+  return "";
+}
+
+/* prekės ženklai */
+$('#mq').innerHTML=[...BRANDS,...BRANDS].map(b=>`<span>${esc(b)}</span>`).join('');
+
+/* eilės */
+$('#rows').innerHTML=ROWS.map((r,ri)=>`
   <div class="row">
     <div class="row-top">
-      <h3>${esc(r.title)}<small>${r.items.length}</small></h3>
-      <div class="arrows"><button aria-label="Atgal" data-dir="-1" data-row="${i}">${arrow(0)}</button><button aria-label="Pirmyn" data-dir="1" data-row="${i}">${arrow(1)}</button></div>
+      <h3>${esc(r.title)}<span class="dot">.</span><span class="note">${esc(r.note)}</span></h3>
+      ${r.more?`<a class="more" href="${r.more}" target="_blank" rel="noopener">Žiūrėti Vimeo</a>`:''}
     </div>
-    <div class="track" id="tr${i}">
-      ${r.items.map(it=>`
-        <button class="card" data-src="${esc(src(it))}" data-title="${esc(it.t+(it.s?' – '+it.s:''))}" aria-label="Žiūrėti: ${esc(it.t+(it.s?' – '+it.s:''))}">
-          <div class="th">${thumb(it)?`<img loading="lazy" alt="" src="${esc(thumb(it))}">`:`<img loading="lazy" alt="" data-vimeo="${it.v}">`}${r.ai?'<span class="tag ai">DI</span>':''}</div>
-          <div class="cap"><b>${esc(it.t)}</b><span>${esc(it.s||'')}</span></div>
-        </button>`).join('')}
+    <div class="car">
+      <button class="arw l" aria-label="Atgal" data-r="${ri}" data-d="-1"><svg class="i"><use href="#i-l"/></svg></button>
+      <div class="track" id="tr${ri}">
+        ${r.items.map((it,ii)=>`
+          <button class="card" data-r="${ri}" data-i="${ii}" aria-label="${r.photo?'Peržiūrėti':'Žiūrėti'}: ${esc(it.t)}">
+            <span class="th"><span class="fallback">${esc(it.t)}</span><img loading="lazy" alt="" src="${esc(thumb(it))}" onerror="this.remove()"><span class="pb${r.photo?' ext':''}"><svg>${r.photo?'<use href="#i-ext"/>':'<use href="#i-play"/>'}</svg></span></span>
+            <span class="cap">${esc(it.t)}</span>
+          </button>`).join('')}
+      </div>
+      <button class="arw r" aria-label="Pirmyn" data-r="${ri}" data-d="1"><svg class="i"><use href="#i-r"/></svg></button>
     </div>
+    <div class="pages" id="pg${ri}" aria-hidden="true"></div>
   </div>`).join('');
 
-/* Vimeo miniatiūros be nurodyto th */
-document.querySelectorAll('img[data-vimeo]').forEach(img=>{
-  fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${img.dataset.vimeo}&width=960`)
-    .then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.thumbnail_url) img.src=j.thumbnail_url; }).catch(()=>{});
-});
-
-/* Karuselės: rodyklės ir tempimas pele */
-document.querySelectorAll('.track').forEach((tr,i)=>{
-  const btns=document.querySelectorAll(`.arrows button[data-row="${i}"]`);
-  const upd=()=>{btns[0].disabled=tr.scrollLeft<4;btns[1].disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4};
-  tr.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
-  btns.forEach(b=>b.addEventListener('click',()=>tr.scrollBy({left:b.dataset.dir*tr.clientWidth*.8,behavior:'smooth'})));
+/* karuselės (kaip vjakutis.lt: rodyklės ant kraštų, taškeliai apačioje) */
+document.querySelectorAll('.track').forEach((tr,ri)=>{
+  const car=tr.parentElement, [L,R]=car.querySelectorAll('.arw'), pg=$('#pg'+ri);
+  const n=tr.children.length;
+  const step=()=>{const c=tr.children[0];return c.getBoundingClientRect().width+parseFloat(getComputedStyle(tr).columnGap||16)};
+  const per=()=>Math.max(1,Math.round(tr.clientWidth/step()));
+  let count=0;
+  function build(){
+    count=Math.max(1,n-per()+1);
+    pg.innerHTML=count>1?Array.from({length:count},(_,i)=>`<button tabindex="-1" data-i="${i}"></button>`).join(''):'';
+    const th=tr.querySelector('.th'); if(th){const y=th.offsetHeight/2;L.style.top=R.style.top=y+'px';}
+    upd();
+  }
+  function upd(){
+    const i=Math.round(tr.scrollLeft/step());
+    pg.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('on',k===Math.min(i,count-1)));
+    L.disabled=tr.scrollLeft<4; R.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4;
+  }
+  tr.addEventListener('scroll',upd,{passive:true});
+  addEventListener('resize',build);
+  pg.addEventListener('click',e=>{const b=e.target.closest('button');if(b)tr.scrollTo({left:b.dataset.i*step(),behavior:'smooth'})});
+  [L,R].forEach(b=>b.addEventListener('click',()=>tr.scrollBy({left:b.dataset.d*step()*per(),behavior:'smooth'})));
+  /* tempimas pele */
   let down=false,x0=0,s0=0,moved=false;
   tr.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;x0=e.clientX;s0=tr.scrollLeft;});
-  window.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-x0;if(Math.abs(dx)>5){moved=true;tr.classList.add('drag');}tr.scrollLeft=s0-dx;});
-  window.addEventListener('pointerup',()=>{if(!down)return;down=false;setTimeout(()=>tr.classList.remove('drag'),0);});
+  addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-x0;if(Math.abs(dx)>6){moved=true;tr.classList.add('drag');}if(moved)tr.scrollLeft=s0-dx;});
+  addEventListener('pointerup',()=>{if(!down)return;down=false;if(moved){tr.classList.remove('drag');tr.scrollTo({left:Math.round(tr.scrollLeft/step())*step(),behavior:'smooth'});}});
   tr.addEventListener('click',e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false;}},true);
+  build();
+  addEventListener('load',build);
 });
 
-/* Video langas */
-const lb=document.getElementById('lb'),f=document.getElementById('lbf'),x=document.getElementById('lbx'),lt=document.getElementById('lbt');let last=null;
-function open(el){last=el;f.src=el.dataset.src;lt.textContent=el.dataset.title||'';lb.classList.add('open');document.body.style.overflow='hidden';x.focus();}
-function close(){lb.classList.remove('open');f.src='about:blank';document.body.style.overflow='';if(last)last.focus();}
-document.querySelectorAll('.card,.reel-btn').forEach(b=>b.addEventListener('click',()=>open(b)));
-x.addEventListener('click',close);
-lb.addEventListener('click',e=>{if(e.target===lb)close()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))close()});
+/* ===== peržiūros langas su kitais klipais ===== */
+const lb=$('#lb'),lbF=$('#lbF'),lbS=$('#lbS'),lbT=$('#lbT'),lbN=$('#lbN');
+let list=[],cur=0,lastFocus=null,lbPlayer=null;
+function show(i){
+  cur=(i+list.length)%list.length; const it=list[cur];
+  lbF.innerHTML=''; lbPlayer=null;
+  if(it.link&&!it.v&&!it.yt&&!it.drive){
+    lbF.innerHTML=`<img src="${esc(it.img)}" alt="${esc(it.t)}">`;
+  }else{
+    const f=document.createElement('iframe');
+    f.src=embed(it); f.allow='autoplay; fullscreen; picture-in-picture'; f.allowFullscreen=true; f.title=it.t;
+    lbF.appendChild(f);
+    if(it.v&&window.Vimeo){ try{ lbPlayer=new Vimeo.Player(f); lbPlayer.on('ended',()=>show(cur+1)); }catch(e){} }
+  }
+  lbT.textContent=it.t; lbN.textContent=`${cur+1} / ${list.length}`;
+  lbS.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('on',k===cur));
+  const on=lbS.children[cur]; if(on) on.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+}
+function openLB(items,i){
+  lastFocus=document.activeElement; list=items;
+  lbS.innerHTML=items.map((it,k)=>`<button aria-label="${esc(it.t)}" data-k="${k}"><img loading="lazy" alt="" src="${esc(thumb(it,320))}" onerror="this.remove()"></button>`).join('');
+  lb.classList.add('open'); document.body.style.overflow='hidden';
+  heroPause(true); show(i); $('#lbX').focus();
+}
+function closeLB(){lb.classList.remove('open');lbF.innerHTML='';document.body.style.overflow='';heroPause(false);if(lastFocus)lastFocus.focus();}
+lbS.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(+b.dataset.k)});
+$('#lbX').addEventListener('click',closeLB);
+$('#lbP').addEventListener('click',()=>show(cur-1));
+$('#lbNx').addEventListener('click',()=>show(cur+1));
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>{
+  const r=ROWS[c.dataset.r], it=r.items[c.dataset.i];
+  if(r.photo){ window.open(it.link,'_blank','noopener'); return; }
+  openLB(r.items,+c.dataset.i);
+}));
 
-/* Antraštė tampa tamsi slenkant */
-const hdr=document.getElementById('hdr');
-const sh=()=>hdr.classList.toggle('solid',scrollY>40); addEventListener('scroll',sh,{passive:true}); sh();
+/* ===== hero: klipai keičiasi vienas po kito ===== */
+const hm=$('#heroMedia'),heroNow=$('#heroNow');
+let hi=0,hp=null,switching=false;
+function heroLoad(i){
+  hi=(i+HERO.length)%HERO.length; const it=HERO[hi];
+  hm.style.backgroundImage=`url('${thumb(it,1280)}')`;
+  heroNow.textContent='Dabar rodoma: '+it.t;
+  if(reduce) return;
+  const f=document.createElement('iframe');
+  f.src=`https://player.vimeo.com/video/${it.v}?background=1&autoplay=1&muted=1&dnt=1`;
+  f.allow='autoplay; fullscreen'; f.tabIndex=-1; f.setAttribute('aria-hidden','true'); f.title='Fono video';
+  hm.appendChild(f);
+  const reveal=()=>{f.classList.add('on');[...hm.querySelectorAll('iframe')].forEach(o=>{if(o!==f)setTimeout(()=>o.remove(),1000)});};
+  if(window.Vimeo){
+    try{
+      const p=new Vimeo.Player(f); hp=p;
+      p.on('play',reveal);
+      p.on('timeupdate',d=>{ if(!switching&&d.duration&&d.duration-d.seconds<0.7){switching=true;heroLoad(hi+1);setTimeout(()=>switching=false,4000);} });
+    }catch(e){reveal();}
+  }else{ setTimeout(reveal,1500); }
+}
+function heroPause(on){ if(!hp)return; try{ on?hp.pause():hp.play(); }catch(e){} }
+heroLoad(0);
+$('#reelBtn').addEventListener('click',()=>openLB(HERO,hi));
+
+/* ===== paslaugų skirtukai ===== */
+const tabs=[...document.querySelectorAll('[role=tab]')];
+function sel(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
+tabs.forEach((t,k)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(k+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];sel(n);n.focus();}});});
+
+/* antraštė */
+const hdr=$('#hdr'); const sh=()=>hdr.classList.toggle('solid',scrollY>60); addEventListener('scroll',sh,{passive:true}); sh();
 </script>
 </body>
 </html>
