@@ -3,429 +3,469 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>prod.lt – video reklamų gamyba su DI ir filmuojant</title>
-<meta name="description" content="Video reklamų gamyba Vilniuje: reklamos, sukurtos su dirbtiniu intelektu (DI), mišri gamyba ir filmuotos reklamos. Prodiuseris Vytautas Jakutis, 14 metų patirtis.">
+<title>prod.lt – video reklamų gamyba filmuojant ir su DI</title>
+<meta name="description" content="Video reklamų gamyba Vilniuje: filmuotos reklamos, reklamos, sukurtos su dirbtiniu intelektu (DI), ir filmavimas su DI. Prodiuseris Vytautas Jakutis, 14 metų patirtis.">
 <meta property="og:title" content="prod.lt – video reklamų gamyba">
-<meta property="og:description" content="Su dirbtiniu intelektu (DI) arba filmuojant. Vienas prodiuseris visam projektui.">
+<meta property="og:description" content="Filmuojant arba su dirbtiniu intelektu (DI). Vienas prodiuseris visam projektui.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://prod.lt/">
 <meta property="og:image" content="https://drive.google.com/thumbnail?id=1xX3JUjUitZRBq8HdbqAwawj8N0hku7VT&amp;sz=w1200">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
+/* Spalvos ir dydžiai sutapatinti su vjakutis.lt */
 :root{
-  --bg:#0E0E0E; --bg2:#151517; --hair:rgba(255,255,255,.09);
-  --ink:#0E0E0E; --grey:#6B6B6B; --mute:#9d9da3; --soft:#c9c9ce;
-  --blue:#82C2F6; --panel:#F4F8FC; --white:#fff; --wa:#3ddc84;
-  --wrap:1280px; --gut:clamp(16px,4vw,40px);
+  --background:#0d0d0d; --foreground:#f5f5f5; --card:#121212; --muted:#1b1b1b;
+  --muted-foreground:#a4a4a4; --secondary:#b7b7b7; --accent:#8ac9f6; --accent-foreground:#0d0d0d;
+  --hairline:rgba(255,255,255,.08);
+  --bg80:rgba(13,13,13,.8); --mf40:rgba(164,164,164,.4); --mf70:rgba(164,164,164,.7); --acc40:rgba(138,201,246,.4);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased}
+@supports (color:lab(0% 0 0)){
+  :root{
+    --background:lab(3.6999% 0 0); --foreground:lab(96.52% 0 0); --card:lab(5.26802% 0 0); --muted:lab(9.52% 0 0);
+    --muted-foreground:lab(67.52% 0 0); --secondary:lab(74.48% 0 0); --accent:lab(77.9798% -12.2124 -28.6822);
+    --accent-foreground:lab(3.6999% 0 0); --hairline:lab(100% 0 0/.08);
+  }
+}
+@supports (color:color-mix(in oklab,red 50%,transparent)){
+  :root{
+    --bg80:color-mix(in oklab,var(--background) 80%,transparent);
+    --mf40:color-mix(in oklab,var(--muted-foreground) 40%,transparent);
+    --mf70:color-mix(in oklab,var(--muted-foreground) 70%,transparent);
+    --acc40:color-mix(in oklab,var(--accent) 40%,transparent);
+  }
+}
+*,::before,::after{box-sizing:border-box;margin:0;padding:0;border:0 solid}
+html{scroll-behavior:smooth;scroll-padding-top:104px;-webkit-text-size-adjust:100%;line-height:1.5}
+body{font-family:"Inter",ui-sans-serif,system-ui,sans-serif;font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;background:var(--background);color:var(--foreground);font-size:1rem;line-height:1.5rem;overflow-x:clip}
+::selection{background:var(--accent);color:var(--accent-foreground)}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button{font:inherit;color:inherit;background:none;cursor:pointer;text-align:inherit}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
-.dot{color:var(--blue)}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-h1,h2,h3{letter-spacing:-.035em;line-height:1.02}
-h2{font-size:clamp(40px,5.6vw,76px);font-weight:800}
-.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16px;padding:15px 24px;border-radius:6px;background:var(--blue);color:var(--ink);transition:background .2s,color .2s}
-.btn:hover{background:var(--white)}
-.btn.line{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
-.btn.line:hover{background:var(--white);color:var(--ink)}
+.acc{color:var(--accent)}
+.wrap{max-width:80rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media (min-width:640px){.wrap{padding-left:1.5rem;padding-right:1.5rem}}
+@media (min-width:1024px){.wrap{padding-left:2rem;padding-right:2rem}}
+.sec{padding-top:1.5rem;padding-bottom:1.5rem}
+@media (min-width:640px){.sec{padding-top:2rem;padding-bottom:2rem}}
+.h2{font-weight:800;letter-spacing:-.025em;line-height:1;font-size:clamp(1.5rem,5vw,3rem);color:var(--foreground)}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+.lead{font-size:.875rem;line-height:1.625;color:var(--muted-foreground);margin-top:-.5rem;margin-bottom:1.5rem}
+@media (min-width:640px){.lead{font-size:1rem}}
+.lbl{font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted-foreground)}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.is-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-/* ===== header (kaip vjakutis.lt) ===== */
-header{position:fixed;inset:0 0 auto;z-index:40;background:rgba(14,14,14,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--hair);transition:background .3s}
-header.solid{background:rgba(14,14,14,.9)}
-.h1row{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px;border-bottom:1px solid var(--hair)}
-.logo{font-weight:800;font-size:22px;letter-spacing:-.035em}
-.contacts{display:flex;align-items:center;gap:6px}
-.contacts a{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--soft);padding:6px 10px;border-radius:6px;transition:color .2s,background .2s}
-.contacts a:hover{color:var(--white);background:rgba(255,255,255,.06)}
-.contacts a.wa{color:var(--wa)}
-.contacts a.wa:hover{color:var(--wa)}
-.h2row{display:flex;justify-content:flex-end;height:38px;align-items:center}
-.h2row nav{display:flex;gap:26px}
-.h2row a{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);transition:color .2s}
-.h2row a:hover{color:var(--white)}
-@media (max-width:760px){
-  .contacts a span{display:none}
-  .contacts a{padding:9px}
-  .contacts svg.i{width:18px;height:18px}
-  .h2row{justify-content:flex-start;overflow-x:auto;scrollbar-width:none}
-  .h2row nav{gap:20px;white-space:nowrap}
+/* ===== antraštė (kaip vjakutis.lt) ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bg80);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--hairline)}
+.hrow{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;height:3rem}
+@media (min-width:640px){.hrow{height:3.5rem}}
+.logo{justify-self:start;font-size:.875rem;line-height:1.25rem;font-weight:600;letter-spacing:-.025em;color:var(--foreground)}
+@media (min-width:640px){.logo{font-size:1rem;line-height:1.5rem}}
+.mnav{display:none;align-items:center;gap:1.75rem;white-space:nowrap}
+.mnav a,.snav a{font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted-foreground);transition:color .15s cubic-bezier(.4,0,.2,1)}
+.mnav a:hover,.snav a:hover{color:var(--foreground)}
+.snav{display:flex;align-items:center;justify-content:center;gap:1.25rem;height:2.5rem;border-top:1px solid var(--hairline)}
+@media (min-width:1280px){
+  .hrow{grid-template-columns:1fr auto 1fr}
+  .mnav{display:flex}
+  .snav{display:none}
+  html{scroll-padding-top:72px}
 }
+.cts{justify-self:end;display:flex;align-items:center;gap:.25rem;white-space:nowrap}
+@media (min-width:640px){.cts{gap:.5rem}}
+.ct{display:none;align-items:center;gap:.5rem;padding:.25rem .5rem;font-size:.75rem;line-height:1rem;color:var(--muted-foreground);transition:color .15s cubic-bezier(.4,0,.2,1)}
+.ct svg.i{width:14px;height:14px}
+.ct:hover{color:var(--foreground)}
+.cti{display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:.375rem;color:var(--muted-foreground);transition:color .15s cubic-bezier(.4,0,.2,1),background-color .15s cubic-bezier(.4,0,.2,1)}
+.cti:hover{color:var(--foreground);background:var(--muted)}
+@media (min-width:768px){.ct{display:inline-flex}.cti{display:none}}
+.wa{display:inline-flex;align-items:center;gap:.5rem;height:2.25rem;padding:0 .5rem;border-radius:.375rem;color:#25D366;transition:color .15s cubic-bezier(.4,0,.2,1),background-color .15s cubic-bezier(.4,0,.2,1)}
+.wa:hover{background:#25D366;color:#fff}
+.wa span{display:none;font-size:.75rem;line-height:1rem;font-weight:500}
+@media (min-width:640px){.wa{padding:0 .75rem}.wa span{display:inline}}
 
-/* ===== hero ===== */
+/* ===== pirmas ekranas ===== */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.hero-media{position:absolute;inset:0;z-index:-2;background:#000 center/cover no-repeat;transition:background-image .4s}
+.hero-media{position:absolute;inset:0;z-index:-2;background:#000 center/cover no-repeat}
 .hero-media iframe{position:absolute;top:50%;left:50%;width:177.78vh;height:56.25vw;min-width:100%;min-height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none;opacity:0;transition:opacity .9s}
 .hero-media iframe.on{opacity:1}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,14,14,.55) 0%,rgba(14,14,14,.45) 45%,rgba(14,14,14,.92) 100%)}
-.hero-in{width:100%;padding-top:150px;padding-bottom:clamp(36px,6vh,72px)}
-.hero h1{font-size:clamp(52px,9.2vw,150px);font-weight:800}
-.hero .claim{margin-top:14px;font-size:clamp(22px,3.1vw,44px);font-weight:600;letter-spacing:-.025em;line-height:1.15;color:var(--white)}
-.hero .claim em{font-style:normal;color:var(--blue)}
-.hero .sub{margin-top:26px;font-size:clamp(16px,1.35vw,19px);color:#d4d4d8;max-width:none}
-.hero-foot{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between}
-.hero-foot .ctas{display:flex;flex-wrap:wrap;gap:12px}
-.reel{display:flex;align-items:center;gap:14px;text-align:left}
-.reel .pl{width:54px;height:54px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);display:grid;place-items:center;transition:background .2s;flex:none}
-.reel .pl svg{width:18px;height:18px;fill:var(--white);margin-left:3px}
-.reel:hover .pl{background:var(--blue);box-shadow:none}
-.reel:hover .pl svg{fill:var(--ink)}
-.reel b{display:block;font-weight:600}
-.reel small{display:block;font-size:13px;color:var(--mute)}
-.reveal{opacity:0;transform:translateY(22px);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
-.reveal.d2{animation-delay:.12s}.reveal.d3{animation-delay:.24s}.reveal.d4{animation-delay:.36s}
-@keyframes up{to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,13,13,.55) 0%,rgba(13,13,13,.4) 45%,rgba(13,13,13,.92) 100%)}
+.hero-in{width:100%;padding-top:7rem;padding-bottom:2.5rem}
+@media (min-width:640px){.hero-in{padding-bottom:3.5rem}}
+.hero h1{font-weight:800;letter-spacing:-.025em;line-height:.95;font-size:clamp(2.75rem,11vw,7.5rem);color:var(--foreground)}
+.hero .claim{margin-top:1rem;font-weight:600;letter-spacing:-.025em;line-height:1.1;font-size:clamp(1.5rem,5vw,3rem);color:var(--foreground)}
+.hero .sub{margin-top:1.25rem;font-size:.875rem;line-height:1.625;color:var(--muted-foreground)}
+@media (min-width:640px){.hero .sub{font-size:1rem}}
+.hero-foot{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}
+.ctas{display:flex;flex-wrap:wrap;gap:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;height:2.5rem;padding:0 1rem;border-radius:.375rem;font-size:.875rem;line-height:1.25rem;font-weight:600;background:var(--accent);color:var(--accent-foreground);border:1px solid var(--accent);transition:all .3s}
+.btn:hover{background:var(--foreground);border-color:var(--foreground)}
+.btn.line{background:var(--bg80);color:var(--foreground);border-color:var(--hairline);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.btn.line:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-foreground)}
+.reel{display:flex;align-items:center;gap:.75rem}
+.reel b{display:block;font-size:.875rem;line-height:1.25rem;font-weight:600}
+.reel small{display:block;font-size:.75rem;line-height:1rem;color:var(--muted-foreground)}
 
-/* ===== brands ===== */
-.brands{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:24px 0 26px;overflow:hidden}
-.brands .label{font-size:13px;color:var(--mute);margin-bottom:14px}
+/* apvalus grojimo mygtukas (kaip vjakutis.lt) */
+.pb{display:flex;align-items:center;justify-content:center;width:3.5rem;height:3.5rem;border-radius:9999px;background:var(--bg80);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--hairline);transition:all .3s cubic-bezier(.4,0,.2,1);flex:none}
+.pb svg.i{width:24px;height:24px;fill:var(--foreground);color:var(--foreground);transform:translateX(2px);transition:all .3s}
+.pb.ext svg.i{fill:none;transform:none}
+.reel:hover .pb,.card:hover .pb{background:var(--accent);border-color:var(--accent);transform:scale(1.1)}
+.reel:hover .pb svg.i,.card:hover .pb svg.i{fill:var(--accent-foreground);color:var(--accent-foreground)}
+.reel:hover .pb.ext svg.i,.card:hover .pb.ext svg.i{fill:none}
+
+/* ===== prekės ženklai ===== */
+.brands{padding-top:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--hairline);overflow:hidden}
+@media (min-width:640px){.brands{padding-top:2rem;padding-bottom:2rem}}
+.brands .lbl{margin-bottom:1rem}
 .marquee{display:flex;width:max-content;animation:mq 50s linear infinite}
-.marquee span{font-size:clamp(20px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;white-space:nowrap;color:#e6e6ea;display:flex;align-items:center}
-.marquee span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);margin:0 44px}
+.marquee span{display:flex;align-items:center;white-space:nowrap;font-size:1.5rem;line-height:2rem;font-weight:600;letter-spacing:-.025em;color:var(--foreground)}
+.marquee span::after{content:"";width:6px;height:6px;border-radius:9999px;background:var(--accent);margin:0 2rem}
 .brands:hover .marquee{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.marquee{animation:none;flex-wrap:wrap;width:auto}}
 
-/* ===== projects ===== */
-section{padding:clamp(80px,10vw,130px) 0}
-.sec-head{margin-bottom:52px}
-.sec-head p{margin-top:18px;color:var(--mute);font-size:18px}
-.row{margin-top:72px}
-.row:first-child{margin-top:0}
-.row-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:16px}
-.row-top h3{font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:-.02em}
-.row-top .note{display:block;margin-top:4px;font-size:13px;color:var(--mute);letter-spacing:0;font-weight:400}
-.row-top .more{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);white-space:nowrap;padding-bottom:3px}
-.row-top .more:hover{color:var(--white)}
+/* ===== paslaugos ===== */
+.sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:.375rem;overflow:hidden}
+@media (min-width:1024px){.sgrid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.scell{background:var(--background);height:100%;padding:1rem;display:flex;flex-direction:column;gap:.5rem;transition:background-color .15s cubic-bezier(.4,0,.2,1)}
+@media (min-width:640px){.scell{padding:1.25rem}}
+.scell:hover{background:var(--card)}
+.scell svg.i{width:20px;height:20px;color:var(--accent)}
+.scell h3{font-size:.875rem;line-height:1.25rem;font-weight:600;color:var(--foreground)}
+.scell p{font-size:.75rem;line-height:1.375;color:var(--muted-foreground)}
+.scell .go{margin-top:auto;padding-top:.25rem;display:inline-flex;align-items:center;gap:.375rem;font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}
+.scell .go svg.i{width:12px;height:12px;color:var(--accent)}
+
+.main4{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.5rem}
+@media (min-width:768px){.main4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1280px){.main4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.svc{display:flex;flex-direction:column;border:1px solid var(--hairline);border-radius:.375rem;background:var(--card);overflow:hidden;height:100%;transition:border-color .5s,box-shadow .5s}
+.svc:hover{border-color:var(--acc40);box-shadow:0 0 40px -10px var(--accent)}
+.svc .im{position:relative;aspect-ratio:16/9;background:var(--muted) center/cover no-repeat;border-bottom:1px solid var(--hairline)}
+.svc .bd{display:flex;flex-direction:column;gap:.75rem;padding:1rem;flex:1}
+@media (min-width:640px){.svc .bd{padding:1.25rem}}
+.svc .no{font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}
+.svc h3{font-weight:800;letter-spacing:-.025em;line-height:1;font-size:1.5rem;color:var(--foreground)}
+.svc p{font-size:.875rem;line-height:1.625;color:var(--muted-foreground)}
+.svc ul{display:grid;gap:.375rem;font-size:.875rem;line-height:1.375;color:var(--foreground)}
+.svc li{position:relative;padding-left:1.125rem}
+.svc li::before{content:"";position:absolute;left:0;top:.62em;width:.625rem;height:2px;background:var(--accent)}
+.svc .fit{margin-top:auto;padding-top:.75rem;border-top:1px solid var(--hairline);font-size:.75rem;line-height:1.375;color:var(--muted-foreground)}
+.svc .lnk{font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.22em;color:var(--secondary);transition:color .15s}
+.svc .lnk:hover{color:var(--accent)}
+
+/* ===== projektai ===== */
+.rows>.row+.row{margin-top:2.5rem}
+@media (min-width:640px){.rows>.row+.row{margin-top:3rem}}
+.rtop{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.75rem}
+.rtop h3{font-size:.875rem;line-height:1.25rem;font-weight:600;color:var(--foreground)}
+@media (min-width:640px){.rtop h3{font-size:1rem;line-height:1.5rem}}
+.rtop .note{display:block;font-size:.75rem;line-height:1rem;font-weight:400;color:var(--muted-foreground);margin-top:.125rem}
+.rtop .more{font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.22em;color:var(--secondary);white-space:nowrap;transition:color .15s}
+.rtop .more:hover{color:var(--accent)}
 .car{position:relative}
-.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2*16px) / 3);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:100%;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+@media (min-width:640px){.track{grid-auto-columns:calc((100% - 1rem) / 2)}}
+@media (min-width:1024px){.track{grid-auto-columns:calc((100% - 2rem) / 3)}}
 .track::-webkit-scrollbar{display:none}
 .track.drag{scroll-snap-type:none;cursor:grabbing}
 .track.drag .card{pointer-events:none}
-@media (max-width:980px){.track{grid-auto-columns:calc((100% - 16px) / 2)}}
-@media (max-width:600px){.track{grid-auto-columns:86%;gap:12px}}
-.card{scroll-snap-align:start;text-align:left;display:block;width:100%}
-.card .th{display:block;position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--bg2);border:1px solid var(--hair);transition:border-color .3s,box-shadow .3s}
+.slide{scroll-snap-align:start;display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.card{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:.375rem;border:1px solid var(--hairline);background:var(--card);transition:all .5s cubic-bezier(.4,0,.2,1)}
+.card:hover{border-color:var(--acc40);box-shadow:0 0 40px -10px var(--accent)}
 .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1)}
-.card .th::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(14,14,14,.6),rgba(14,14,14,.08) 45%,transparent);transition:opacity .3s}
-.card .pb{position:absolute;z-index:2;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:rgba(14,14,14,.82);display:grid;place-items:center;transition:background .25s,transform .25s}
-.card .pb svg{width:18px;height:18px;fill:var(--white);margin-left:3px;transition:fill .25s}
-.card .pb.ext svg{margin-left:0;fill:none;stroke:var(--white);stroke-width:2}
-.card:hover .th{border-color:rgba(130,194,246,.55);box-shadow:0 0 0 1px rgba(130,194,246,.2),0 14px 44px -10px rgba(130,194,246,.45)}
 .card:hover img{transform:scale(1.05)}
-.card:hover .th::before{opacity:.6}
-.card:hover .pb{background:var(--blue);transform:scale(1.06)}
-.card:hover .pb svg{fill:var(--ink)}
-.card:hover .pb.ext svg{fill:none;stroke:var(--ink)}
-.card .cap{display:block;margin-top:10px;font-size:14px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card .fallback{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;font-size:20px;color:#55555c;padding:20px;text-align:center}
-.arw{position:absolute;z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(14,14,14,.8);border:1px solid var(--hair);display:grid;place-items:center;transform:translateY(-50%);transition:opacity .2s,background .2s}
-.arw:hover{background:var(--white);color:var(--ink)}
-.arw.l{left:12px}.arw.r{right:12px}
-.arw[disabled]{opacity:0;pointer-events:none}
-.pages{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:18px}
-.pages button{width:6px;height:6px;border-radius:3px;background:#3a3a40;transition:width .25s,background .25s;padding:0}
-.pages button.on{width:22px;background:var(--blue)}
+.card .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,.7),rgba(13,13,13,.1),transparent);opacity:.8;transition:opacity .3s}
+.card:hover .ov{opacity:.6}
+.card .pc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.card .fallback{position:absolute;inset:0;display:grid;place-items:center;padding:1rem;text-align:center;font-weight:600;font-size:.875rem;color:var(--muted-foreground)}
+.cap{padding:0 .25rem;font-size:.75rem;line-height:1rem;color:var(--muted-foreground);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.arw{position:absolute;z-index:3;top:calc(50% - 1.5rem);transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:9999px;background:var(--bg80);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--hairline);color:var(--foreground);box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);transition:color .15s,background-color .15s,border-color .15s,opacity .15s}
+.arw:hover{background:var(--accent);color:var(--accent-foreground);border-color:var(--accent)}
+.arw[disabled]{opacity:.5;pointer-events:none}
+.arw.l{left:.5rem}.arw.r{right:.5rem}
+.dots{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1rem}
+.dots button{height:6px;width:6px;border-radius:9999px;background:var(--mf40);transition:all .3s}
+.dots button:hover{background:var(--mf70)}
+.dots button.on{width:1.5rem;background:var(--accent)}
 
-/* ===== services (light) ===== */
-.light{background:var(--panel);color:var(--ink)}
-.light .sec-head p{color:#4a4a4f}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.tabs button{padding:11px 18px;border-radius:999px;font-weight:600;font-size:15px;color:var(--ink);box-shadow:inset 0 0 0 1px #cfd8e2;transition:background .2s,color .2s,box-shadow .2s}
-.tabs button:hover{box-shadow:inset 0 0 0 1px var(--ink)}
-.tabs button[aria-selected=true]{background:var(--ink);color:var(--white);box-shadow:none}
-@media (max-width:600px){.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:calc(-1*var(--gut));margin-right:calc(-1*var(--gut));padding:0 var(--gut)}.tabs button{white-space:nowrap}}
-.panel{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;background:var(--white);border-radius:8px;padding:clamp(16px,2vw,24px)}
-.panel[hidden]{display:none}
-.panel .img{aspect-ratio:16/10;border-radius:6px;background:#dfe7ef center/cover no-repeat}
-.panel .txt{padding:8px 8px 8px 0}
-.panel .tag{display:inline-block;font-size:13px;font-weight:600;background:var(--blue);color:var(--ink);padding:5px 11px;border-radius:999px}
-.panel h3{font-size:clamp(28px,3vw,40px);font-weight:800;margin:16px 0 12px}
-.panel p{color:#3d3d40}
-.panel ul{list-style:none;display:grid;gap:9px;margin-top:18px;font-size:15px}
-.panel li{padding-left:22px;position:relative}
-.panel li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--blue)}
-.panel .fit{margin-top:22px;padding-top:16px;border-top:1px solid #e3e8ee;font-size:14px;color:var(--grey)}
-.panel .lnk{display:inline-flex;margin-top:18px;font-weight:600;border-bottom:2px solid var(--blue);padding-bottom:2px}
-@media (max-width:900px){.panel{grid-template-columns:1fr}.panel .txt{padding:4px}}
-.other{margin-top:64px;display:grid;grid-template-columns:260px 1fr;gap:24px 48px}
-.other h3{font-size:28px;font-weight:800}
-.other ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #d5dde6}
-.other li{padding:18px 20px 18px 0;border-bottom:1px solid #d5dde6}
-.other li b{display:block;font-weight:600}
-.other li span{font-size:15px;color:var(--grey)}
-@media (max-width:980px){.other{grid-template-columns:1fr}.other ul{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.other ul{grid-template-columns:1fr}}
+/* ===== kaip dirbame ===== */
+.hgrid{display:grid;gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:.375rem;overflow:hidden}
+.nums{grid-template-columns:1fr}
+@media (min-width:768px){.nums{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.steps{grid-template-columns:1fr;margin-top:1rem}
+@media (min-width:640px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.hcell{background:var(--background);padding:1rem;display:flex;flex-direction:column;gap:.5rem;transition:background-color .15s}
+@media (min-width:640px){.hcell{padding:1.25rem}}
+.hcell:hover{background:var(--card)}
+.hcell b i{font-style:normal;color:var(--accent)}
+.hcell b{font-weight:800;letter-spacing:-.025em;line-height:1;font-size:clamp(1.5rem,5vw,3rem);color:var(--foreground)}
+.hcell .n{font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}
+.hcell h3{font-size:.875rem;line-height:1.25rem;font-weight:600;color:var(--foreground)}
+.hcell p,.hcell>span:not(.n){font-size:.75rem;line-height:1.375;color:var(--muted-foreground)}
 
-/* ===== numbers + process ===== */
-.nums{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair)}
-.nums div{padding:34px 24px 0 0}
-.nums div+div{padding-left:24px;border-left:1px solid var(--hair)}
-.nums b{display:block;font-size:clamp(48px,6vw,88px);font-weight:800;letter-spacing:-.04em;line-height:1}
-.nums b i{font-style:normal;color:var(--blue)}
-.nums span{display:block;margin-top:12px;color:var(--mute);max-width:28ch}
-@media (max-width:760px){.nums{grid-template-columns:1fr}.nums div+div{border-left:0;padding-left:0;border-top:1px solid var(--hair);margin-top:30px}}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:72px}
-.step{background:var(--bg2);border:1px solid var(--hair);border-radius:8px;padding:26px 24px 30px}
-.step .n{font-size:14px;font-weight:600;color:var(--blue)}
-.step h3{font-size:21px;font-weight:600;letter-spacing:-.02em;margin:36px 0 10px}
-.step p{color:var(--mute);font-size:15px}
-@media (max-width:980px){.steps{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.steps{grid-template-columns:1fr}}
+/* ===== apačia (identiška vjakutis.lt) ===== */
+footer .h2{margin-bottom:2rem}
+.fmain{display:flex;flex-direction:column;gap:2rem}
+@media (min-width:768px){.fmain{flex-direction:row;align-items:flex-end;justify-content:space-between}}
+.flist{font-size:.875rem;line-height:1.25rem}
+.flist li+li{margin-top:.5rem}
+.flist a{display:inline-flex;align-items:center;gap:.75rem;color:var(--foreground);transition:color .15s cubic-bezier(.4,0,.2,1)}
+.flist a:hover{color:var(--accent)}
+.flist .loc{display:inline-flex;align-items:center;gap:.75rem;color:var(--muted-foreground)}
+.soc{display:flex;align-items:center;gap:.5rem}
+.soc a{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:.375rem;border:1px solid var(--hairline);color:var(--muted-foreground);transition:all .3s cubic-bezier(.4,0,.2,1)}
+.soc a:hover{color:#fff}
+.soc .ig:hover{background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);border-color:transparent}
+.soc .fb:hover{background:#1877F2;border-color:#1877F2}
+.soc .wh:hover{background:#25D366;border-color:#25D366}
+.soc .li:hover{background:#0A66C2;border-color:#0A66C2}
+.fbot{margin-top:2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted-foreground)}
 
-/* ===== footer (kaip vjakutis.lt) ===== */
-footer{border-top:1px solid var(--hair);padding:clamp(64px,8vw,96px) 0 34px}
-footer h2{font-size:clamp(48px,6vw,84px)}
-footer .lead{margin-top:18px;color:var(--mute);font-size:18px}
-.f-main{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:40px}
-.f-list{list-style:none;display:grid;gap:16px}
-.f-list a,.f-list span{display:inline-flex;align-items:center;gap:14px;font-size:clamp(17px,1.6vw,21px)}
-.f-list svg.i{width:22px;height:22px;stroke-width:1.6;color:var(--soft)}
-.f-list a:hover{color:var(--blue)}
-.f-list .loc{color:var(--mute)}
-.soc{display:flex;gap:10px}
-.soc a{width:58px;height:58px;border-radius:8px;border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;color:var(--soft);transition:border-color .2s,color .2s,background .2s}
-.soc a svg.i{width:22px;height:22px;stroke-width:1.6}
-.soc a:hover{border-color:var(--blue);color:var(--blue)}
-.f-bot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:56px;font-size:13px;letter-spacing:.2em;color:var(--mute)}
-
-/* ===== lightbox ===== */
-.lb{position:fixed;inset:0;z-index:60;background:#060607;display:none;flex-direction:column}
+/* ===== peržiūros langas ===== */
+.lb{position:fixed;inset:0;z-index:60;background:var(--background);display:none;flex-direction:column}
 .lb.open{display:flex}
-.lb-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px var(--gut)}
-.lb-top b{font-weight:600}
-.lb-top small{color:var(--mute);margin-left:10px}
-.lb-x{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:9px 14px;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
-.lb-x:hover{background:var(--white);color:var(--ink)}
-.lb-mid{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:16px;padding:0 var(--gut)}
-.lb-frame{width:min(1200px,100%,calc((100svh - 260px) * 16 / 9));aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;position:relative}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;height:3.5rem;padding:0 1rem;border-bottom:1px solid var(--hairline)}
+@media (min-width:640px){.lb-top{padding:0 1.5rem}}
+.lb-top b{font-size:.875rem;line-height:1.25rem;font-weight:600}
+.lb-top small{font-size:.75rem;color:var(--muted-foreground);margin-left:.75rem}
+.lb-x{display:inline-flex;align-items:center;gap:.5rem;height:2.25rem;padding:0 .75rem;border-radius:.375rem;font-size:.75rem;font-weight:500;color:var(--muted-foreground);transition:color .15s,background-color .15s}
+.lb-x:hover{color:var(--foreground);background:var(--muted)}
+.lb-mid{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:1rem;padding:1rem}
+.lb-frame{width:min(1200px,100%,calc((100svh - 230px) * 16 / 9));aspect-ratio:16/9;background:#000;border-radius:.375rem;overflow:hidden;position:relative;border:1px solid var(--hairline)}
 .lb-frame iframe,.lb-frame img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:contain}
-.lb-nav{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;flex:none;transition:background .2s}
-.lb-nav:hover{background:var(--white);color:var(--ink)}
-.lb-nav svg.i{width:20px;height:20px}
-.lb-strip{display:flex;gap:10px;overflow-x:auto;padding:16px var(--gut) 20px;scrollbar-width:thin}
-.lb-strip button{flex:none;width:150px;aspect-ratio:16/9;border-radius:4px;overflow:hidden;position:relative;opacity:.5;transition:opacity .2s;box-shadow:inset 0 0 0 1px var(--hair);background:var(--bg2)}
+.lb-nav{position:static;transform:none;flex:none}
+.lb-strip{display:flex;gap:.5rem;overflow-x:auto;padding:.75rem 1rem 1rem;scrollbar-width:thin;border-top:1px solid var(--hairline)}
+.lb-strip button{flex:none;width:136px;aspect-ratio:16/9;border-radius:.375rem;overflow:hidden;position:relative;opacity:.5;transition:opacity .2s,box-shadow .2s;border:1px solid var(--hairline);background:var(--card)}
 .lb-strip button img{width:100%;height:100%;object-fit:cover}
 .lb-strip button:hover{opacity:.85}
-.lb-strip button.on{opacity:1;box-shadow:0 0 0 2px var(--blue)}
-@media (max-width:700px){.lb-nav{position:absolute;bottom:130px;z-index:2;background:rgba(14,14,14,.8)}.lb-nav.p{left:16px}.lb-nav.n{right:16px}.lb-mid{padding:0}.lb-frame{border-radius:0}.lb-strip button{width:110px}}
+.lb-strip button.on{opacity:1;box-shadow:0 0 0 2px var(--accent)}
+@media (max-width:700px){.lb-mid{padding:0;position:relative}.lb-nav{position:absolute;top:auto;bottom:-3.25rem;z-index:2}.lb-nav.p{left:1rem}.lb-nav.n{right:1rem}.lb-frame{border-radius:0;border-left:0;border-right:0}.lb-strip{padding-top:3.5rem}.lb-strip button{width:104px}}
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
-  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
-  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
   <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
-  <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
-  <symbol id="i-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
-  <symbol id="i-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></symbol>
-  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-l" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-r" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></symbol>
+  <symbol id="i-screen" viewBox="0 0 24 24"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z"/><path d="M12 17v4"/><path d="M8 21h8"/><rect x="2" y="3" width="20" height="14" rx="2"/></symbol>
+  <symbol id="i-clap" viewBox="0 0 24 24"><path d="m12.296 3.464 3.02 3.956"/><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m6.18 5.276 3.1 3.899"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"/><circle cx="12" cy="13" r="3"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></symbol>
 </svg>
 
 <header id="hdr">
   <div class="wrap">
-    <div class="h1row">
-      <a class="logo" href="#top" aria-label="prod.lt, į pradžią">prod<span class="dot">.</span>lt</a>
-      <div class="contacts">
-        <a href="tel:+37068538288" aria-label="Skambinti +370 685 38288"><svg class="i"><use href="#i-phone"/></svg><span>+370 685 38288</span></a>
-        <a href="mailto:vjakutis@gmail.com" aria-label="Rašyti vjakutis@gmail.com"><svg class="i"><use href="#i-mail"/></svg><span>vjakutis@gmail.com</span></a>
-        <a class="wa" href="https://wa.me/37068538288" aria-label="Rašyti per WhatsApp"><svg class="i"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
-      </div>
-    </div>
-    <div class="h2row">
-      <nav aria-label="Pagrindinė">
+    <div class="hrow">
+      <a class="logo" href="#top" aria-label="prod.lt, į pradžią">prod<span class="acc">.</span>lt</a>
+      <nav class="mnav" aria-label="Pagrindinė">
         <a href="#projektai">Projektai</a>
         <a href="#paslaugos">Paslaugos</a>
         <a href="#procesas">Kaip dirbame</a>
-        <a href="#kontaktai">Kontaktai</a>
       </nav>
+      <div class="cts">
+        <a class="ct" href="tel:+37068538288"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>+370 685 38288</a>
+        <a class="ct" href="mailto:vjakutis@gmail.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>vjakutis@gmail.com</a>
+        <a class="cti" href="tel:+37068538288" aria-label="Skambinti"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></a>
+        <a class="cti" href="mailto:vjakutis@gmail.com" aria-label="Rašyti el. laišką"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></a>
+        <a class="wa" href="https://wa.me/37068538288" target="_blank" rel="noopener noreferrer" aria-label="Rašyti per WhatsApp"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+      </div>
     </div>
   </div>
+  <nav class="snav" aria-label="Pagrindinė (mobili)">
+    <a href="#projektai">Projektai</a>
+    <a href="#paslaugos">Paslaugos</a>
+    <a href="#procesas">Kaip dirbame</a>
+  </nav>
 </header>
 
 <main id="top">
-  <section class="hero" style="padding:0">
+  <section class="hero">
     <div class="hero-media" id="heroMedia"></div>
     <div class="wrap hero-in">
-      <h1 class="reveal">Video reklamų gamyba<span class="dot">.</span></h1>
-      <p class="claim reveal d2"><em>Su dirbtiniu intelektu (DI)</em> arba filmuojant.</p>
-      <p class="sub reveal d3">Prodiusuoju reklamas nuo idėjos iki ekrano jau 14 metų. Dirbu su atrinktais DI kūrėjais, kurie kino lygio vaizdą sukuria greičiau ir be filmavimo aikštelės, o kai reikia tikrų žmonių ir produkto, organizuoju filmavimą. Visam projektui turite vieną kontaktą.</p>
-      <div class="hero-foot reveal d4">
+      <h1 class="reveal">Video reklamų gamyba<span class="acc">.</span></h1>
+      <p class="claim reveal">Filmuojant arba <span class="acc">su dirbtiniu intelektu (DI).</span></p>
+      <p class="sub reveal">Prodiusuoju reklamas nuo idėjos iki ekrano jau 14 metų. Organizuoju filmavimus, o su atrinktais DI kūrėjais kino lygio vaizdą sukuriame greičiau ir be filmavimo aikštelės. Visam projektui turite vieną kontaktą.</p>
+      <div class="hero-foot reveal">
         <div class="ctas">
           <a class="btn" href="#kontaktai">Aptarti projektą</a>
           <a class="btn line" href="#projektai">Žiūrėti projektus</a>
         </div>
-        <button class="reel" id="reelBtn"><span class="pl"><svg><use href="#i-play"/></svg></span><span><b>Žiūrėti su garsu</b><small id="heroNow">&nbsp;</small></span></button>
+        <button class="reel" id="reelBtn" type="button"><span class="pb"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg></span><span><b>Žiūrėti su garsu</b><small id="heroNow">&nbsp;</small></span></button>
       </div>
     </div>
   </section>
 
   <div class="brands" aria-label="Prekės ženklai, su kuriais dirbau">
-    <div class="wrap label">Prekės ženklai, su kuriais dirbau</div>
+    <div class="wrap"><p class="lbl">Prekės ženklai, su kuriais dirbau</p></div>
     <div class="marquee" aria-hidden="true" id="mq"></div>
   </div>
 
-  <section id="projektai">
+  <section id="paslaugos" class="sec">
     <div class="wrap">
-      <div class="sec-head">
-        <h2>Įgyvendinti projektai<span class="dot">.</span></h2>
-        <p>Reklamos, sukurtos su DI, ir reklamos, kurias prodiusavau filmavimo aikštelėje. Slinkite į šoną, kad pamatytumėte daugiau.</p>
-      </div>
-      <div id="rows"></div>
-    </div>
-  </section>
+      <div class="sh reveal"><h2 class="h2">Paslaugos<span class="acc">.</span></h2></div>
+      <p class="lead reveal">Gamybos būdą parenkame pagal idėją, biudžetą ir terminą: filmuojame, kuriame su DI arba sujungiame abu. Visais atvejais turite vieną žmogų, kuris atsako už visą projektą.</p>
 
-  <section id="paslaugos" class="light">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Ką galite užsakyti<span class="dot">.</span></h2>
-        <p>Gamybos būdą parenkame pagal idėją, biudžetą ir terminą. Dažniausiai pradedame nuo DI, nes tai greičiausias kelias iki kino lygio vaizdo, o filmavimą pasirenkame tada, kai jo tikrai reikia. Visais atvejais turite vieną žmogų, kuris atsako už visą projektą.</p>
-      </div>
-
-      <div class="tabs" role="tablist" aria-label="Paslaugos">
-        <button role="tab" id="t-di" aria-controls="p-di" aria-selected="true">Reklama su DI</button>
-        <button role="tab" id="t-mix" aria-controls="p-mix" aria-selected="false" tabindex="-1">Mišri gamyba</button>
-        <button role="tab" id="t-film" aria-controls="p-film" aria-selected="false" tabindex="-1">Filmuota reklama</button>
-        <button role="tab" id="t-ev" aria-controls="p-ev" aria-selected="false" tabindex="-1">Video renginiams</button>
+      <div class="sgrid reveal">
+        <a class="scell" href="#s-film"><svg class="i" aria-hidden="true"><use href="#i-video"/></svg><h3>Filmavimas</h3><p>Reklamos su režisieriumi, aktoriais ir lokacijomis.</p><span class="go">Plačiau<svg class="i" aria-hidden="true"><use href="#i-down"/></svg></span></a>
+        <a class="scell" href="#s-di"><svg class="i" aria-hidden="true"><use href="#i-sparkles"/></svg><h3>DI</h3><p>Reklamos, sukurtos su dirbtiniu intelektu.</p><span class="go">Plačiau<svg class="i" aria-hidden="true"><use href="#i-down"/></svg></span></a>
+        <a class="scell" href="#s-mix"><svg class="i" aria-hidden="true"><use href="#i-layers"/></svg><h3>Filmavimas su DI</h3><p>Filmuoti kadrai ir DI pasauliai viename video.</p><span class="go">Plačiau<svg class="i" aria-hidden="true"><use href="#i-down"/></svg></span></a>
+        <a class="scell" href="#s-ev"><svg class="i" aria-hidden="true"><use href="#i-screen"/></svg><h3>Renginiams su DI</h3><p>Video ekranams, anonsams ir rėmėjams.</p><span class="go">Plačiau<svg class="i" aria-hidden="true"><use href="#i-down"/></svg></span></a>
+        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-clap"/></svg><h3>Service producing</h3><p>Biudžetai, komandos ir grafikai užsienio produkcijoms.</p></div>
+        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><h3>Vietinė produkcija</h3><p>Pilnas filmavimų organizavimas Lietuvoje.</p></div>
+        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-film"/></svg><h3>Filmai ir TV serialai</h3><p>Ilgo formato produkcija.</p></div>
+        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg><h3>Fotografijos prodiusavimas</h3><p>Reklaminių foto sesijų produkcija.</p></div>
+        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-ticket"/></svg><h3>Renginių produkcija</h3><p>Gyvi ir prekių ženklų renginiai.</p></div>
+        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg><h3>Fixing paslaugos</h3><p>Vietinė logistika, leidimai, prieigos.</p></div>
       </div>
 
-      <div class="panel" role="tabpanel" id="p-di" aria-labelledby="t-di">
-        <div class="img" style="background-image:url('https://drive.google.com/thumbnail?id=1xX3JUjUitZRBq8HdbqAwawj8N0hku7VT&amp;sz=w1600')" role="img" aria-label="Kadras iš reklamos, sukurtos su DI"></div>
-        <div class="txt">
-          <span class="tag">Tik DI</span>
-          <h3>Reklama, sukurta su DI</h3>
-          <p>Visas vaizdas sukuriamas su DI įrankiais. Dirbu su atrinktais DI kūrėjais ir režisieriais, todėl kūrėją parenku pagal jūsų idėjos stilių ir žanrą.</p>
-          <ul>
-            <li>Scenarijus, stilius ir kadrų planas</li>
-            <li>Kadrų pavyzdžiai prieš pradedant gamybą</li>
-            <li>Video generavimas, montažas, garsas ir spalva</li>
-            <li>Versijos skirtingiems formatams ir rinkoms</li>
-          </ul>
-          <p class="fit">Tinka, kai reikia kino lygio vaizdo greitai ir be filmavimo aikštelės.</p>
-        </div>
-      </div>
-
-      <div class="panel" role="tabpanel" id="p-mix" aria-labelledby="t-mix" hidden>
-        <div class="img" style="background-image:url('https://drive.google.com/thumbnail?id=1rRfnD1aDsgheNadlzBSfQP1vqLt8xbcq&amp;sz=w1600')" role="img" aria-label="Mišrios gamybos pavyzdys"></div>
-        <div class="txt">
-          <span class="tag">Filmavimas + DI</span>
-          <h3>Mišri gamyba</h3>
-          <p>Filmuojame tai, kas turi būti tikra, o DI sukuria aplinkas, sezonus ir pasaulius, kurių nufilmuoti neįmanoma ar per brangu.</p>
-          <ul>
-            <li>Filmuoti žmonės ir produktas</li>
-            <li>DI aplinkos, efektai ir transformacijos</li>
-            <li>Mažiau filmavimo dienų ir lokacijų</li>
-            <li>Lengviau daryti versijas skirtingoms rinkoms</li>
-          </ul>
-          <p class="fit">Tinka dideliam vaizdui su protingesniu biudžetu.</p>
-        </div>
-      </div>
-
-      <div class="panel" role="tabpanel" id="p-film" aria-labelledby="t-film" hidden>
-        <div class="img" style="background-image:url('https://i.vimeocdn.com/video/1300208619-620888cdd0e4db9e585a62ba43d8ef99cf24569492d5f7b0b_1280x720')" role="img" aria-label="Kadras iš filmuotos reklamos"></div>
-        <div class="txt">
-          <span class="tag">Filmavimas</span>
-          <h3>Filmuota reklama</h3>
-          <p>Klasikinė reklamos gamyba su režisieriumi, operatoriumi, aktoriais ir lokacijomis. Tokių reklamų prodiusavau daugiau nei 200.</p>
-          <ul>
-            <li>Režisieriaus ir komandos paieška</li>
-            <li>Kastingas, lokacijos, leidimai</li>
-            <li>Filmavimo dienos ir postprodukcija</li>
-            <li>Versijos TV, internetui ir socialiniams tinklams</li>
-          </ul>
-          <p class="fit">Tinka, kai svarbūs tikri žmonės, produktas ir emocija.</p>
-        </div>
-      </div>
-
-      <div class="panel" role="tabpanel" id="p-ev" aria-labelledby="t-ev" hidden>
-        <div class="img" style="background-image:url('https://drive.google.com/thumbnail?id=1473A4TNDih5JgJxKFgGM_3EZGOd8blia&amp;sz=w1600')" role="img" aria-label="Kadras iš DI video"></div>
-        <div class="txt">
-          <span class="tag">DI video renginiams</span>
-          <h3>Vaizdai, kurių visada norėjote renginiui</h3>
-          <p>Su DI galima sukurti tai, ko anksčiau renginiui nebūtų leidęs biudžetas ar laikas.</p>
-          <ul>
-            <li>Vaizdas ekranams renginio metu: atidarymui, scenos fonui, pertraukoms</li>
-            <li>Reklaminis video prieš renginį: bilietams, registracijai, anonsui</li>
-            <li>Atskiras video rėmėjui, partneriui ar nominacijai</li>
-            <li>Kadrai, kurių nufilmuoti nepavyktų: mastelis, minia, kitos epochos</li>
-            <li>Trumpesnės ir vertikalios versijos kitiems kanalams</li>
-          </ul>
-          <a class="lnk" href="https://renginiai.prod.lt" target="_blank" rel="noopener">Pristatymas renginių organizatoriams</a>
-        </div>
-      </div>
-
-      <div class="other">
-        <h3>Kitos paslaugos<span class="dot">.</span></h3>
-        <ul>
-          <li><b>Service producing</b><span>Biudžetai, komandos ir grafikai užsienio produkcijoms Lietuvoje</span></li>
-          <li><b>Vietinė produkcija</b><span>Pilnas filmavimų organizavimas Lietuvoje</span></li>
-          <li><b>Filmai ir TV serialai</b><span>Ilgo formato produkcija</span></li>
-          <li><b>Renginių produkcija</b><span>Gyvi ir prekių ženklų renginiai</span></li>
-          <li><b>Fixing paslaugos</b><span>Vietinė logistika, leidimai, prieigos</span></li>
-          <li><b>Fotografijos prodiusavimas</b><span>Reklaminių foto sesijų produkcija</span></li>
-        </ul>
+      <div class="main4">
+        <article class="svc reveal" id="s-film">
+          <div class="im" style="background-image:url('https://i.vimeocdn.com/video/1300208619-620888cdd0e4db9e585a62ba43d8ef99cf24569492d5f7b0b_1280x720')" role="img" aria-label="Kadras iš filmuotos reklamos"></div>
+          <div class="bd">
+            <p class="no">01 · Filmuota reklama</p>
+            <h3>Filmavimas<span class="acc">.</span></h3>
+            <p>Klasikinė reklamos gamyba su režisieriumi, operatoriumi, aktoriais ir lokacijomis. Tokių reklamų prodiusavau daugiau nei 200.</p>
+            <ul>
+              <li>Režisieriaus ir komandos paieška</li>
+              <li>Kastingas, lokacijos, leidimai</li>
+              <li>Filmavimo dienos ir postprodukcija</li>
+              <li>Versijos TV, internetui ir socialiniams tinklams</li>
+            </ul>
+            <p class="fit">Tinka, kai svarbūs tikri žmonės, produktas ir emocija.</p>
+          </div>
+        </article>
+        <article class="svc reveal" id="s-di">
+          <div class="im" style="background-image:url('https://drive.google.com/thumbnail?id=1xX3JUjUitZRBq8HdbqAwawj8N0hku7VT&amp;sz=w1200')" role="img" aria-label="Kadras iš reklamos, sukurtos su DI"></div>
+          <div class="bd">
+            <p class="no">02 · Reklama, sukurta su DI</p>
+            <h3>DI<span class="acc">.</span></h3>
+            <p>Visas vaizdas sukuriamas su DI įrankiais. Dirbu su atrinktais DI kūrėjais ir režisieriais, todėl kūrėją parenku pagal idėjos stilių ir žanrą.</p>
+            <ul>
+              <li>Scenarijus, stilius ir kadrų planas</li>
+              <li>Kadrų pavyzdžiai prieš pradedant gamybą</li>
+              <li>Generavimas, montažas, garsas ir spalva</li>
+              <li>Versijos skirtingiems formatams ir rinkoms</li>
+            </ul>
+            <p class="fit">Tinka, kai reikia kino lygio vaizdo greitai ir be filmavimo aikštelės.</p>
+          </div>
+        </article>
+        <article class="svc reveal" id="s-mix">
+          <div class="im" style="background-image:url('https://drive.google.com/thumbnail?id=1rRfnD1aDsgheNadlzBSfQP1vqLt8xbcq&amp;sz=w1200')" role="img" aria-label="Filmavimo su DI pavyzdys"></div>
+          <div class="bd">
+            <p class="no">03 · Mišri gamyba</p>
+            <h3>Filmavimas su DI<span class="acc">.</span></h3>
+            <p>Filmuojame tai, kas turi būti tikra, o DI sukuria aplinkas, sezonus ir pasaulius, kurių nufilmuoti neįmanoma ar per brangu.</p>
+            <ul>
+              <li>Filmuoti žmonės ir produktas</li>
+              <li>DI aplinkos, efektai ir transformacijos</li>
+              <li>Mažiau filmavimo dienų ir lokacijų</li>
+              <li>Lengviau daryti versijas skirtingoms rinkoms</li>
+            </ul>
+            <p class="fit">Tinka dideliam vaizdui su protingesniu biudžetu.</p>
+          </div>
+        </article>
+        <article class="svc reveal" id="s-ev">
+          <div class="im" style="background-image:url('https://drive.google.com/thumbnail?id=1473A4TNDih5JgJxKFgGM_3EZGOd8blia&amp;sz=w1200')" role="img" aria-label="Kadras iš DI video"></div>
+          <div class="bd">
+            <p class="no">04 · DI video renginiams</p>
+            <h3>Renginiams su DI<span class="acc">.</span></h3>
+            <p>Su DI galima sukurti tai, ko anksčiau renginiui nebūtų leidęs biudžetas ar laikas.</p>
+            <ul>
+              <li>Vaizdas ekranams renginio metu</li>
+              <li>Reklaminis video prieš renginį</li>
+              <li>Atskiras video rėmėjui ar partneriui</li>
+              <li>Kadrai, kurių nufilmuoti nepavyktų</li>
+              <li>Trumpesnės ir vertikalios versijos</li>
+            </ul>
+            <p class="fit"><a class="lnk" href="https://renginiai.prod.lt" target="_blank" rel="noopener">Pristatymas renginių organizatoriams</a></p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="procesas">
+  <section id="projektai" class="sec">
     <div class="wrap">
-      <div class="nums">
-        <div><b>14<i>+</i></b><span>metų reklamos ir kino produkcijoje</span></div>
-        <div><b>200<i>+</i></b><span>prodiusuotų reklamų</span></div>
-        <div><b>1</b><span>kontaktas visam projektui, nuo sąmatos iki pridavimo</span></div>
+      <div class="sh reveal"><h2 class="h2">Įgyvendinti projektai<span class="acc">.</span></h2></div>
+      <p class="lead reveal">Reklamos, sukurtos su DI, ir reklamos, kurias prodiusavau filmavimo aikštelėje. Slinkite į šoną, kad pamatytumėte daugiau.</p>
+      <div class="rows" id="rows"></div>
+    </div>
+  </section>
+
+  <section id="procesas" class="sec">
+    <div class="wrap">
+      <div class="sh reveal"><h2 class="h2">Kaip dirbame<span class="acc">.</span></h2></div>
+      <div class="hgrid nums reveal">
+        <div class="hcell"><b>14<i>+</i></b><span>metų reklamos ir kino produkcijoje</span></div>
+        <div class="hcell"><b>200<i>+</i></b><span>prodiusuotų reklamų</span></div>
+        <div class="hcell"><b>1</b><span>kontaktas visam projektui, nuo sąmatos iki pridavimo</span></div>
       </div>
-      <div class="steps">
-        <div class="step"><span class="n">01</span><h3>Pokalbis ir idėja</h3><p>Papasakojate, ką reikia pasakyti, kam ir kada. Pasakau, ar verta kurti su DI, ar filmuoti.</p></div>
-        <div class="step"><span class="n">02</span><h3>Sąmata ir planas</h3><p>Komanda, terminai ir išsami sąmata. Jei tinka keli keliai, parodau kelis scenarijus.</p></div>
-        <div class="step"><span class="n">03</span><h3>Gamyba</h3><p>Kadrų pavyzdžius ir tarpinius rezultatus matote ir tvirtinate eigoje.</p></div>
-        <div class="step"><span class="n">04</span><h3>Pridavimas</h3><p>Garsas, spalva ir galutinės versijos visiems kanalams, su sutartais korekcijų ratais.</p></div>
+      <div class="hgrid steps reveal">
+        <div class="hcell"><span class="n">01</span><h3>Pokalbis ir idėja</h3><p>Papasakojate, ką reikia pasakyti, kam ir kada. Pasakau, ar verta filmuoti, ar kurti su DI.</p></div>
+        <div class="hcell"><span class="n">02</span><h3>Sąmata ir planas</h3><p>Komanda, terminai ir išsami sąmata. Jei tinka keli keliai, parodau kelis scenarijus.</p></div>
+        <div class="hcell"><span class="n">03</span><h3>Gamyba</h3><p>Kadrų pavyzdžius ir tarpinius rezultatus matote ir tvirtinate eigoje.</p></div>
+        <div class="hcell"><span class="n">04</span><h3>Pridavimas</h3><p>Garsas, spalva ir galutinės versijos visiems kanalams, su sutartais korekcijų ratais.</p></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer id="kontaktai">
+<footer id="kontaktai" class="sec">
   <div class="wrap">
-    <h2>Pakalbėkime<span class="dot">.</span></h2>
-    <p class="lead">Per vieną pokalbį pasakysiu, kaip geriausia įgyvendinti jūsų idėją, kiek tai maždaug kainuos ir per kiek laiko turėsite rezultatą.</p>
-    <div class="f-main">
-      <ul class="f-list">
-        <li><a href="tel:+37068538288"><svg class="i"><use href="#i-phone"/></svg>+370 685 38288</a></li>
-        <li><a href="mailto:vjakutis@gmail.com?subject=Video%20reklama"><svg class="i"><use href="#i-mail"/></svg>vjakutis@gmail.com</a></li>
-        <li><span class="loc"><svg class="i"><use href="#i-pin"/></svg>Vilnius, Lietuva</span></li>
-      </ul>
-      <div class="soc">
-        <a href="https://www.instagram.com/vjakutis/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i"><use href="#i-ig"/></svg></a>
-        <a href="https://www.facebook.com/vjakutis" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i"><use href="#i-fb"/></svg></a>
-        <a href="https://wa.me/37068538288" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i"><use href="#i-wa"/></svg></a>
-        <a href="https://www.linkedin.com/in/vjakutis" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i"><use href="#i-in"/></svg></a>
+    <div class="reveal"><h2 class="h2">Pakalbėkime<span class="acc">.</span></h2></div>
+    <div class="fmain">
+      <div class="reveal">
+        <ul class="flist">
+          <li><a href="tel:+37068538288"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>+370 685 38288</a></li>
+          <li><a href="mailto:vjakutis@gmail.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>vjakutis@gmail.com</a></li>
+          <li class="loc"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Vilnius, Lietuva</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <ul class="soc">
+          <li><a class="ig" href="https://www.instagram.com/vjakutis/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></a></li>
+          <li><a class="fb" href="https://www.facebook.com/vjakutis" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#i-fb"/></svg></a></li>
+          <li><a class="wh" href="https://wa.me/37068538288" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg></a></li>
+          <li><a class="li" href="https://www.linkedin.com/in/vjakutis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg></a></li>
+        </ul>
       </div>
     </div>
-    <div class="f-bot"><span>© 2026 VYTAUTAS JAKUTIS</span><span>PRODIUSERIS</span></div>
+    <div class="fbot"><span>© 2026 Vytautas Jakutis</span><span>Prodiuseris</span></div>
   </div>
 </footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video peržiūra">
-  <div class="lb-top"><div><b id="lbT"></b><small id="lbN"></small></div><button class="lb-x" id="lbX"><svg class="i"><use href="#i-x"/></svg>Uždaryti</button></div>
+  <div class="lb-top"><div><b id="lbT"></b><small id="lbN"></small></div><button class="lb-x" id="lbX" type="button"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg>Uždaryti</button></div>
   <div class="lb-mid">
-    <button class="lb-nav p" id="lbP" aria-label="Ankstesnis"><svg class="i"><use href="#i-l"/></svg></button>
+    <button class="arw lb-nav p" id="lbP" type="button" aria-label="Ankstesnis"><svg class="i" aria-hidden="true"><use href="#i-l"/></svg></button>
     <div class="lb-frame" id="lbF"></div>
-    <button class="lb-nav n" id="lbNx" aria-label="Kitas"><svg class="i"><use href="#i-r"/></svg></button>
+    <button class="arw lb-nav n" id="lbNx" type="button" aria-label="Kitas"><svg class="i" aria-hidden="true"><use href="#i-r"/></svg></button>
   </div>
   <div class="lb-strip" id="lbS"></div>
 </div>
@@ -558,36 +598,40 @@ $('#mq').innerHTML=[...BRANDS,...BRANDS].map(b=>`<span>${esc(b)}</span>`).join('
 
 /* eilės */
 $('#rows').innerHTML=ROWS.map((r,ri)=>`
-  <div class="row">
-    <div class="row-top">
-      <h3>${esc(r.title)}<span class="dot">.</span><span class="note">${esc(r.note)}</span></h3>
-      ${r.more?`<a class="more" href="${r.more}" target="_blank" rel="noopener">Žiūrėti Vimeo</a>`:''}
+  <div class="row reveal">
+    <div class="rtop">
+      <h3>${esc(r.title)}<span class="acc">.</span><span class="note">${esc(r.note)}</span></h3>
+      ${r.more?`<a class="more" href="${r.more}" target="_blank" rel="noopener noreferrer">Žiūrėti Vimeo</a>`:''}
     </div>
     <div class="car">
-      <button class="arw l" aria-label="Atgal" data-r="${ri}" data-d="-1"><svg class="i"><use href="#i-l"/></svg></button>
       <div class="track" id="tr${ri}">
         ${r.items.map((it,ii)=>`
-          <button class="card" data-r="${ri}" data-i="${ii}" aria-label="${r.photo?'Peržiūrėti':'Žiūrėti'}: ${esc(it.t)}">
-            <span class="th"><span class="fallback">${esc(it.t)}</span><img loading="lazy" alt="" src="${esc(thumb(it))}" onerror="this.remove()"><span class="pb${r.photo?' ext':''}"><svg>${r.photo?'<use href="#i-ext"/>':'<use href="#i-play"/>'}</svg></span></span>
-            <span class="cap">${esc(it.t)}</span>
-          </button>`).join('')}
+          <div class="slide">
+            <button class="card" type="button" data-r="${ri}" data-i="${ii}" aria-label="${r.photo?'Peržiūrėti':'Žiūrėti'}: ${esc(it.t)}">
+              <span class="fallback">${esc(it.t)}</span>
+              <img loading="lazy" alt="" src="${esc(thumb(it))}" onerror="this.remove()">
+              <span class="ov"></span>
+              <span class="pc"><span class="pb${r.photo?' ext':''}"><svg class="i" aria-hidden="true"><use href="${r.photo?'#i-ext':'#i-play'}"/></svg></span></span>
+            </button>
+            <p class="cap">${esc(it.t)}</p>
+          </div>`).join('')}
       </div>
-      <button class="arw r" aria-label="Pirmyn" data-r="${ri}" data-d="1"><svg class="i"><use href="#i-r"/></svg></button>
+      <button class="arw l" type="button" aria-label="Atgal" data-d="-1"><svg class="i" aria-hidden="true"><use href="#i-l"/></svg></button>
+      <button class="arw r" type="button" aria-label="Pirmyn" data-d="1"><svg class="i" aria-hidden="true"><use href="#i-r"/></svg></button>
     </div>
-    <div class="pages" id="pg${ri}" aria-hidden="true"></div>
+    <div class="dots" id="pg${ri}"></div>
   </div>`).join('');
 
 /* karuselės (kaip vjakutis.lt: rodyklės ant kraštų, taškeliai apačioje) */
 document.querySelectorAll('.track').forEach((tr,ri)=>{
-  const car=tr.parentElement, [L,R]=car.querySelectorAll('.arw'), pg=$('#pg'+ri);
+  const car=tr.parentElement, L=car.querySelector('.arw.l'), R=car.querySelector('.arw.r'), pg=$('#pg'+ri);
   const n=tr.children.length;
   const step=()=>{const c=tr.children[0];return c.getBoundingClientRect().width+parseFloat(getComputedStyle(tr).columnGap||16)};
-  const per=()=>Math.max(1,Math.round(tr.clientWidth/step()));
+  const per=()=>Math.max(1,Math.round((tr.clientWidth+1)/step()));
   let count=0;
   function build(){
     count=Math.max(1,n-per()+1);
-    pg.innerHTML=count>1?Array.from({length:count},(_,i)=>`<button tabindex="-1" data-i="${i}"></button>`).join(''):'';
-    const th=tr.querySelector('.th'); if(th){const y=th.offsetHeight/2;L.style.top=R.style.top=y+'px';}
+    pg.innerHTML=count>1?Array.from({length:count},(_,i)=>`<button type="button" aria-label="Rodyti ${i+1}" data-i="${i}"></button>`).join(''):'';
     upd();
   }
   function upd(){
@@ -598,7 +642,7 @@ document.querySelectorAll('.track').forEach((tr,ri)=>{
   tr.addEventListener('scroll',upd,{passive:true});
   addEventListener('resize',build);
   pg.addEventListener('click',e=>{const b=e.target.closest('button');if(b)tr.scrollTo({left:b.dataset.i*step(),behavior:'smooth'})});
-  [L,R].forEach(b=>b.addEventListener('click',()=>tr.scrollBy({left:b.dataset.d*step()*per(),behavior:'smooth'})));
+  [L,R].forEach(b=>b.addEventListener('click',()=>{const i=Math.round(tr.scrollLeft/step())+(+b.dataset.d);tr.scrollTo({left:Math.max(0,i)*step(),behavior:'smooth'})}));
   /* tempimas pele */
   let down=false,x0=0,s0=0,moved=false;
   tr.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;x0=e.clientX;s0=tr.scrollLeft;});
@@ -629,7 +673,7 @@ function show(i){
 }
 function openLB(items,i){
   lastFocus=document.activeElement; list=items;
-  lbS.innerHTML=items.map((it,k)=>`<button aria-label="${esc(it.t)}" data-k="${k}"><img loading="lazy" alt="" src="${esc(thumb(it,320))}" onerror="this.remove()"></button>`).join('');
+  lbS.innerHTML=items.map((it,k)=>`<button type="button" aria-label="${esc(it.t)}" data-k="${k}"><img loading="lazy" alt="" src="${esc(thumb(it,320))}" onerror="this.remove()"></button>`).join('');
   lb.classList.add('open'); document.body.style.overflow='hidden';
   heroPause(true); show(i); $('#lbX').focus();
 }
@@ -645,7 +689,7 @@ document.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>{
   openLB(r.items,+c.dataset.i);
 }));
 
-/* ===== hero: klipai keičiasi vienas po kito ===== */
+/* ===== pirmas ekranas: klipai keičiasi vienas po kito ===== */
 const hm=$('#heroMedia'),heroNow=$('#heroNow');
 let hi=0,hp=null,switching=false;
 function heroLoad(i){
@@ -670,13 +714,14 @@ function heroPause(on){ if(!hp)return; try{ on?hp.pause():hp.play(); }catch(e){}
 heroLoad(0);
 $('#reelBtn').addEventListener('click',()=>openLB(HERO,hi));
 
-/* ===== paslaugų skirtukai ===== */
-const tabs=[...document.querySelectorAll('[role=tab]')];
-function sel(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
-tabs.forEach((t,k)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(k+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];sel(n);n.focus();}});});
-
-/* antraštė */
-const hdr=$('#hdr'); const sh=()=>hdr.classList.toggle('solid',scrollY>60); addEventListener('scroll',sh,{passive:true}); sh();
+/* ===== atsiradimas slenkant (kaip vjakutis.lt) ===== */
+(function(){
+  const els=[...document.querySelectorAll('.reveal')];
+  document.querySelectorAll('.hero .reveal').forEach((el,k)=>{el.style.transitionDelay=(k*0.08)+'s';requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('is-visible')));});
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('is-visible'));return;}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px',threshold:0.05});
+  els.forEach(e=>{if(!e.closest('.hero'))io.observe(e);});
+})();
 </script>
 </body>
 </html>
