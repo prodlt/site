@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://prod.lt/">
 <meta property="og:image" content="https://drive.google.com/thumbnail?id=1xX3JUjUitZRBq8HdbqAwawj8N0hku7VT&amp;sz=w1200">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico?v=2" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -101,8 +101,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bg80);-we
 @media (min-width:640px){.hero-in{padding-bottom:3.5rem}}
 .hero h1{font-weight:800;letter-spacing:-.025em;line-height:.95;font-size:clamp(2.75rem,11vw,7.5rem);color:var(--foreground)}
 /* peržiūra: antraštė vienoje eilutėje (prod.lt/?viena) */
-@media (min-width:640px){.h1-one .hero-in{container-type:inline-size}.h1-one .hero h1{white-space:nowrap;font-size:8.4cqw}}
 .hero .claim{text-wrap:balance;margin-top:1rem;font-weight:600;letter-spacing:-.025em;line-height:1.1;font-size:clamp(1.5rem,5vw,3rem);color:var(--foreground)}
+/* nuo 640px antraštė ir paantraštė vienoje eilutėje, vienodo pločio */
+@media (min-width:640px){.hero-in{container-type:inline-size}.hero h1{white-space:nowrap;font-size:8.4cqw}.hero .claim{white-space:nowrap;font-size:4.54cqw}}
 .hero .sub{margin-top:1.25rem;font-size:.875rem;line-height:1.625;color:var(--muted-foreground)}
 @media (min-width:640px){.hero .sub{font-size:1rem}}
 .hero-foot{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}
@@ -135,20 +136,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bg80);-we
 @media (prefers-reduced-motion:reduce){.marquee{animation:none;flex-wrap:wrap;width:auto}}
 
 /* ===== paslaugos ===== */
-.sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:.375rem;overflow:hidden}
-@media (min-width:1024px){.sgrid{grid-template-columns:repeat(5,minmax(0,1fr))}}
-.scell{background:var(--background);height:100%;padding:1rem;display:flex;flex-direction:column;gap:.5rem;transition:background-color .15s cubic-bezier(.4,0,.2,1)}
-@media (min-width:640px){.scell{padding:1.25rem}}
-.scell:hover{background:var(--card)}
-.scell svg.i{width:20px;height:20px;color:var(--accent)}
-.scell h3{font-size:.875rem;line-height:1.25rem;font-weight:600;color:var(--foreground)}
-.scell p{font-size:.75rem;line-height:1.375;color:var(--muted-foreground)}
-.scell .go{margin-top:auto;padding-top:.25rem;display:inline-flex;align-items:center;gap:.375rem;font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}
-.scell .go svg.i{width:12px;height:12px;color:var(--accent)}
 
 .main4{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.5rem}
 @media (min-width:768px){.main4{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (min-width:1280px){.main4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1024px){.main4{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.more-svc{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--hairline);font-size:.875rem;line-height:1.625;color:var(--muted-foreground)}
+.more-svc a{color:var(--foreground);transition:color .15s}
+.more-svc a:hover{color:var(--accent)}
 .svc{display:flex;flex-direction:column;border:1px solid var(--hairline);border-radius:.375rem;background:var(--card);overflow:hidden;height:100%;transition:border-color .5s,box-shadow .5s}
 .svc:hover{border-color:var(--acc40);box-shadow:0 0 40px -10px var(--accent)}
 .svc .im{position:relative;aspect-ratio:16/9;background:var(--muted) center/cover no-repeat;border-bottom:1px solid var(--hairline)}
@@ -311,7 +305,7 @@ footer .h2{margin-bottom:2rem}
     <div class="hero-media" id="heroMedia"></div>
     <div class="wrap hero-in">
       <h1 class="reveal">Vaizdo reklamų gamyba<span class="acc">.</span></h1>
-      <p class="claim reveal">Nuo tradicinių filmavimų iki <span class="acc">dirbtinio intelekto&nbsp;(DI)</span> sprendimų.</p>
+      <p class="claim reveal">Nuo filmavimų iki <span class="acc">dirbtinio intelekto</span> sprendimų.</p>
       <p class="sub reveal">Jau 14 metų prodiusuoju reklamas nuo idėjos iki eterio. Nesvarbu, ar tai tradicinis filmavimas, ar kino lygio vaizdo generavimas pasitelkiant DI – užtikrinu sklandų procesą be nereikalingų rūpesčių. Visam projektui turėsite tik vieną atsakingą kontaktą.</p>
       <div class="hero-foot reveal">
         <div class="ctas">
@@ -331,20 +325,7 @@ footer .h2{margin-bottom:2rem}
   <section id="paslaugos" class="sec">
     <div class="wrap">
       <div class="sh reveal"><h2 class="h2">Paslaugos<span class="acc">.</span></h2></div>
-      <p class="lead reveal">Gamybos būdą parenkame pagal idėją, biudžetą ir terminą: filmuojame, kuriame su DI arba sujungiame abu. Visais atvejais turite vieną žmogų, kuris atsako už visą projektą.</p>
-
-      <div class="sgrid reveal">
-        <a class="scell" href="#s-film"><svg class="i" aria-hidden="true"><use href="#i-video"/></svg><h3>Filmavimas</h3><p>Reklamos su režisieriumi, aktoriais ir lokacijomis.</p><span class="go">Plačiau<svg class="i" aria-hidden="true"><use href="#i-down"/></svg></span></a>
-        <a class="scell" href="#s-di"><svg class="i" aria-hidden="true"><use href="#i-sparkles"/></svg><h3>DI</h3><p>Reklamos, sukurtos su dirbtiniu intelektu.</p><span class="go">Plačiau<svg class="i" aria-hidden="true"><use href="#i-down"/></svg></span></a>
-        <a class="scell" href="#s-mix"><svg class="i" aria-hidden="true"><use href="#i-layers"/></svg><h3>Filmavimas su DI</h3><p>Filmuoti kadrai ir DI pasauliai viename video.</p><span class="go">Plačiau<svg class="i" aria-hidden="true"><use href="#i-down"/></svg></span></a>
-        <a class="scell" href="#s-ev"><svg class="i" aria-hidden="true"><use href="#i-screen"/></svg><h3>Renginiams su DI</h3><p>Video ekranams, anonsams ir rėmėjams.</p><span class="go">Plačiau<svg class="i" aria-hidden="true"><use href="#i-down"/></svg></span></a>
-        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-clap"/></svg><h3>Service producing</h3><p>Biudžetai, komandos ir grafikai užsienio produkcijoms.</p></div>
-        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><h3>Vietinė produkcija</h3><p>Pilnas filmavimų organizavimas Lietuvoje.</p></div>
-        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-film"/></svg><h3>Filmai ir TV serialai</h3><p>Ilgo formato produkcija.</p></div>
-        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg><h3>Fotografijos prodiusavimas</h3><p>Reklaminių foto sesijų produkcija.</p></div>
-        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-ticket"/></svg><h3>Renginių produkcija</h3><p>Gyvi ir prekių ženklų renginiai.</p></div>
-        <div class="scell"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg><h3>Fixing paslaugos</h3><p>Vietinė logistika, leidimai, prieigos.</p></div>
-      </div>
+      <p class="lead reveal">Gamybos būdą parenkame pagal idėją, biudžetą ir terminą: filmuojame, kuriame su DI arba sujungiame abu. Tą patį darome ir su reklaminėmis nuotraukomis. Visais atvejais turite vieną žmogų, kuris atsako už visą projektą.</p>
 
       <div class="main4">
         <article class="svc reveal" id="s-film">
@@ -378,10 +359,10 @@ footer .h2{margin-bottom:2rem}
           </div>
         </article>
         <article class="svc reveal" id="s-mix">
-          <div class="im" style="background-image:url('https://drive.google.com/thumbnail?id=1rRfnD1aDsgheNadlzBSfQP1vqLt8xbcq&amp;sz=w1200')" role="img" aria-label="Filmavimo su DI pavyzdys"></div>
+          <div class="im" style="background-image:url('https://drive.google.com/thumbnail?id=1rRfnD1aDsgheNadlzBSfQP1vqLt8xbcq&amp;sz=w1200')" role="img" aria-label="Mišrios gamybos pavyzdys"></div>
           <div class="bd">
-            <p class="no">03 · Mišri gamyba</p>
-            <h3>Filmavimas su DI<span class="acc">.</span></h3>
+            <p class="no">03 · Filmavimas + DI</p>
+            <h3>Mišri gamyba<span class="acc">.</span></h3>
             <p>Filmuojame tai, kas turi būti tikra, o DI sukuria aplinkas, sezonus ir pasaulius, kurių nufilmuoti neįmanoma ar per brangu.</p>
             <ul>
               <li>Filmuoti žmonės ir produktas</li>
@@ -408,7 +389,38 @@ footer .h2{margin-bottom:2rem}
             <p class="fit"><a class="lnk" href="https://renginiai.prod.lt" target="_blank" rel="noopener">Pristatymas renginių organizatoriams</a></p>
           </div>
         </article>
+        <article class="svc reveal" id="s-foto">
+          <div class="im" style="background-image:url('https://magic.film/wp-content/uploads/2024/07/sc01-20-bb-chrono-some-office-4x5-02-original-scaled-1-aspect-ratio-1920-1080.jpg')" role="img" aria-label="Reklaminės fotosesijos kadras"></div>
+          <div class="bd">
+            <p class="no">05 · Reklaminės fotosesijos</p>
+            <h3>Foto prodiusavimas<span class="acc">.</span></h3>
+            <p>Fotosesijos kampanijoms, e. prekybai ir socialiniams tinklams: nuo fotografo paieškos iki galutinių failų.</p>
+            <ul>
+              <li>Fotografo ir komandos paieška</li>
+              <li>Kastingas, stilistai, lokacijos</li>
+              <li>Fotosesijos diena ir retušas</li>
+              <li>Nuotraukos visiems kanalams ir formatams</li>
+            </ul>
+            <p class="fit">Tinka, kai kadre reikia tikro produkto ir žmonių.</p>
+          </div>
+        </article>
+        <article class="svc reveal" id="s-difoto">
+          <div class="im" style="background-image:url('https://drive.google.com/thumbnail?id=1fY19X-pQX5-Q0fWTdd7PDNGjqJe_VXDB&amp;sz=w1200')" role="img" aria-label="Vizualas, sukurtas su DI"></div>
+          <div class="bd">
+            <p class="no">06 · Vizualai, sukurti su DI</p>
+            <h3>DI foto kūrimas<span class="acc">.</span></h3>
+            <p>Kampanijos vizualai be fotosesijos: žmonės, aplinkos ir siužetai sukuriami su DI, o kūrėją parenku pagal norimą stilių.</p>
+            <ul>
+              <li>Vizualų koncepcija ir stilius</li>
+              <li>Pavyzdžiai prieš kuriant visą seriją</li>
+              <li>Produktas DI sukurtoje aplinkoje</li>
+              <li>Retušas ir failai visiems formatams</li>
+            </ul>
+            <p class="fit">Tinka, kai vizualų reikia daug ir greitai arba fotosesija būtų per brangi.</p>
+          </div>
+        </article>
       </div>
+      <p class="more-svc reveal">Taip pat: service producing ir fixing užsienio produkcijoms Lietuvoje, filmai ir TV serialai. Plačiau – <a href="https://vjakutis.lt" target="_blank" rel="noopener">vjakutis.lt</a></p>
     </div>
   </section>
 
@@ -472,7 +484,6 @@ footer .h2{margin-bottom:2rem}
   <div class="lb-strip" id="lbS"></div>
 </div>
 
-<script>if(/[?&]viena\b/.test(location.search))document.documentElement.classList.add('h1-one');</script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 /* ================== TURINYS ==================
@@ -492,7 +503,10 @@ const DI=[
   {t:"Abou Majas",drive:"1MOlJN8F2bM8pPDYAhAFGW9y5h_eHgJs6"},
   {t:"Vasara",drive:"1A0d-5TFf_mhjOJY_e3damOmKKljXKLXP"},
   {t:"Pergalė – 1410",drive:"1473A4TNDih5JgJxKFgGM_3EZGOd8blia"},
-  {t:"Volfas Engelman – darbo skelbimas",drive:"1tSqrDPEERFg2rT83IsZQtfcCkEy9le01"}
+  {t:"Volfas Engelman – darbo skelbimas",drive:"1tSqrDPEERFg2rT83IsZQtfcCkEy9le01"},
+  {t:"MyPrize",drive:"18eySEXG2hyUfA5_fRrf17AbIEIIB_ps_"},
+  {t:"Fevi – Twitch Man",drive:"17WDbAUaCLn-F-aNHQQE1bt6OW-ugdf8B"},
+  {t:"BIDBID.LT – Tesla",drive:"1DcM-mb3Ndl1fNT5hy62na9xxOw9vC6I_"}
 ];
 
 const SVC=[
