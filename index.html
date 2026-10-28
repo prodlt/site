@@ -100,7 +100,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bg80);-we
 .hero-in{width:100%;padding-top:7rem;padding-bottom:2.5rem}
 @media (min-width:640px){.hero-in{padding-bottom:3.5rem}}
 .hero h1{font-weight:800;letter-spacing:-.025em;line-height:.95;font-size:clamp(2.75rem,11vw,7.5rem);color:var(--foreground)}
-.hero .claim{margin-top:1rem;font-weight:600;letter-spacing:-.025em;line-height:1.1;font-size:clamp(1.5rem,5vw,3rem);color:var(--foreground)}
+/* peržiūra: antraštė vienoje eilutėje (prod.lt/?viena) */
+@media (min-width:640px){.h1-one .hero-in{container-type:inline-size}.h1-one .hero h1{white-space:nowrap;font-size:8.4cqw}}
+.hero .claim{text-wrap:balance;margin-top:1rem;font-weight:600;letter-spacing:-.025em;line-height:1.1;font-size:clamp(1.5rem,5vw,3rem);color:var(--foreground)}
 .hero .sub{margin-top:1.25rem;font-size:.875rem;line-height:1.625;color:var(--muted-foreground)}
 @media (min-width:640px){.hero .sub{font-size:1rem}}
 .hero-foot{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}
@@ -308,9 +310,9 @@ footer .h2{margin-bottom:2rem}
   <section class="hero">
     <div class="hero-media" id="heroMedia"></div>
     <div class="wrap hero-in">
-      <h1 class="reveal">Video reklamų gamyba<span class="acc">.</span></h1>
-      <p class="claim reveal">Filmuojant arba <span class="acc">su dirbtiniu intelektu (DI).</span></p>
-      <p class="sub reveal">Prodiusuoju reklamas nuo idėjos iki ekrano jau 14 metų. Organizuoju filmavimus, o su atrinktais DI kūrėjais kino lygio vaizdą sukuriame greičiau ir be filmavimo aikštelės. Visam projektui turite vieną kontaktą.</p>
+      <h1 class="reveal">Vaizdo reklamų gamyba<span class="acc">.</span></h1>
+      <p class="claim reveal">Nuo tradicinių filmavimų iki <span class="acc">dirbtinio intelekto&nbsp;(DI)</span> sprendimų.</p>
+      <p class="sub reveal">Jau 14 metų prodiusuoju reklamas nuo idėjos iki eterio. Nesvarbu, ar tai tradicinis filmavimas, ar kino lygio vaizdo generavimas pasitelkiant DI – užtikrinu sklandų procesą be nereikalingų rūpesčių. Visam projektui turėsite tik vieną atsakingą kontaktą.</p>
       <div class="hero-foot reveal">
         <div class="ctas">
           <a class="btn" href="#kontaktai">Aptarti projektą</a>
@@ -470,6 +472,7 @@ footer .h2{margin-bottom:2rem}
   <div class="lb-strip" id="lbS"></div>
 </div>
 
+<script>if(/[?&]viena\b/.test(location.search))document.documentElement.classList.add('h1-one');</script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 /* ================== TURINYS ==================
