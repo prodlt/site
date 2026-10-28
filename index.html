@@ -103,7 +103,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bg80);-we
 /* peržiūra: antraštė vienoje eilutėje (prod.lt/?viena) */
 .hero .claim{text-wrap:balance;margin-top:1rem;font-weight:600;letter-spacing:-.025em;line-height:1.1;font-size:clamp(1.5rem,5vw,3rem);color:var(--foreground)}
 /* nuo 640px antraštė ir paantraštė vienoje eilutėje, vienodo pločio */
-@media (min-width:640px){.hero-in{container-type:inline-size}.hero h1{white-space:nowrap;font-size:8.4cqw}.hero .claim{white-space:nowrap;font-size:4.54cqw}}
+@media (min-width:640px){.hero-in{container-type:inline-size}.hero h1{white-space:nowrap;font-size:8.4cqw}.hero .claim{white-space:nowrap;font-size:6.74cqw}}
 .hero .sub{margin-top:1.25rem;font-size:.875rem;line-height:1.625;color:var(--muted-foreground)}
 @media (min-width:640px){.hero .sub{font-size:1rem}}
 .hero-foot{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}
@@ -145,7 +145,10 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bg80);-we
 .more-svc a:hover{color:var(--accent)}
 .svc{display:flex;flex-direction:column;border:1px solid var(--hairline);border-radius:.375rem;background:var(--card);overflow:hidden;height:100%;transition:border-color .5s,box-shadow .5s}
 .svc:hover{border-color:var(--acc40);box-shadow:0 0 40px -10px var(--accent)}
-.svc .im{position:relative;aspect-ratio:16/9;background:var(--muted) center/cover no-repeat;border-bottom:1px solid var(--hairline)}
+.svc .im{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--muted) center/cover no-repeat;border-bottom:1px solid var(--hairline)}
+.svc .im video,.svc .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.svc .im.ss img{opacity:0;transition:opacity 1.2s ease}
+.svc .im.ss img.on{opacity:1}
 .svc .bd{display:flex;flex-direction:column;gap:.75rem;padding:1rem;flex:1}
 @media (min-width:640px){.svc .bd{padding:1.25rem}}
 .svc .no{font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}
@@ -164,7 +167,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--bg80);-we
 .rtop{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.75rem}
 .rtop h3{font-size:.875rem;line-height:1.25rem;font-weight:600;color:var(--foreground)}
 @media (min-width:640px){.rtop h3{font-size:1rem;line-height:1.5rem}}
-.rtop .note{display:block;font-size:.75rem;line-height:1rem;font-weight:400;color:var(--muted-foreground);margin-top:.125rem}
+.rtop .note{display:block;max-width:72ch;font-size:.875rem;line-height:1.5;font-weight:400;color:var(--muted-foreground);margin-top:.25rem}
 .rtop .more{font-size:11px;line-height:1rem;text-transform:uppercase;letter-spacing:.22em;color:var(--secondary);white-space:nowrap;transition:color .15s}
 .rtop .more:hover{color:var(--accent)}
 .car{position:relative}
@@ -305,7 +308,7 @@ footer .h2{margin-bottom:2rem}
     <div class="hero-media" id="heroMedia"></div>
     <div class="wrap hero-in">
       <h1 class="reveal">Vaizdo reklamų gamyba<span class="acc">.</span></h1>
-      <p class="claim reveal">Nuo filmavimų iki <span class="acc">dirbtinio intelekto</span> sprendimų.</p>
+      <p class="claim reveal">Nuo filmavimų iki <span class="acc">DI</span> sprendimų.</p>
       <p class="sub reveal">Jau 14 metų prodiusuoju reklamas nuo idėjos iki eterio. Nesvarbu, ar tai tradicinis filmavimas, ar kino lygio vaizdo generavimas pasitelkiant DI – užtikrinu sklandų procesą be nereikalingų rūpesčių. Visam projektui turėsite tik vieną atsakingą kontaktą.</p>
       <div class="hero-foot reveal">
         <div class="ctas">
@@ -374,7 +377,7 @@ footer .h2{margin-bottom:2rem}
           </div>
         </article>
         <article class="svc reveal" id="s-ev">
-          <div class="im" style="background-image:url('https://drive.google.com/thumbnail?id=1473A4TNDih5JgJxKFgGM_3EZGOd8blia&amp;sz=w1200')" role="img" aria-label="Kadras iš DI video"></div>
+          <div class="im"><video class="lv" muted loop playsinline preload="none" poster="media/renginiai.jpg" data-src="media/renginiai.mp4" aria-label="DI video renginio ekranams"></video></div>
           <div class="bd">
             <p class="no">04 · DI video renginiams</p>
             <h3>Renginiams su DI<span class="acc">.</span></h3>
@@ -390,7 +393,7 @@ footer .h2{margin-bottom:2rem}
           </div>
         </article>
         <article class="svc reveal" id="s-foto">
-          <div class="im" style="background-image:url('https://magic.film/wp-content/uploads/2024/07/sc01-20-bb-chrono-some-office-4x5-02-original-scaled-1-aspect-ratio-1920-1080.jpg')" role="img" aria-label="Reklaminės fotosesijos kadras"></div>
+          <div class="im ss" role="img" aria-label="Reklaminių fotosesijų kadrai"><img src="https://magic.film/wp-content/uploads/2024/07/sc01-20-bb-chrono-some-office-4x5-02-original-scaled-1-aspect-ratio-1920-1080.jpg" alt="" loading="lazy" decoding="async" class="on"><img src="https://magic.film/wp-content/uploads/2026/02/32_EVO_Lifestyle_IONIQ-9_LS_ExteriorFront-_RGB-aspect-ratio-1920-1080.jpg" alt="" loading="lazy" decoding="async"><img src="https://magic.film/wp-content/uploads/2024/07/film-service-2022-yamaha-mt10-eu-cyan-storm-action-001-03.jpg" alt="" loading="lazy" decoding="async"><img src="https://magic.film/wp-content/uploads/2024/07/photos-post-finance002.jpg" alt="" loading="lazy" decoding="async"></div>
           <div class="bd">
             <p class="no">05 · Reklaminės fotosesijos</p>
             <h3>Foto prodiusavimas<span class="acc">.</span></h3>
@@ -452,7 +455,7 @@ footer .h2{margin-bottom:2rem}
 
 <footer id="kontaktai" class="sec">
   <div class="wrap">
-    <div class="reveal"><h2 class="h2">Pakalbėkime<span class="acc">.</span></h2></div>
+    <div class="reveal"><h2 class="h2">Pasikalbėkime<span class="acc">.</span></h2></div>
     <div class="fmain">
       <div class="reveal">
         <ul class="flist">
@@ -583,10 +586,10 @@ const PHOTO=[
 const OTHER_CO="Darbai sukurti dirbant kitose prodiuserinėse kompanijose";
 const ROWS=[
   {title:"Sukurta su DI",note:"Pavaizduoti darbai sukurti mano atstovaujamų DI kūrėjų",items:DI},
-  {title:"Tarptautinės reklamos",note:OTHER_CO,more:"https://vimeo.com/showcase/12219750",items:SVC.map(([t,v,th])=>({t,v,th}))},
-  {title:"Vietinė produkcija",note:OTHER_CO,more:"https://vimeo.com/showcase/12219785",items:LOC.map(([t,v,th])=>({t,v,th}))},
+  {title:"Tarptautinės reklamos",note:"Tarptautinių prekių ženklų reklamose dirbau Line Producer: atsakiau už biudžetą, komandą, grafiką ir sklandžią filmavimų eigą. "+OTHER_CO+".",more:"https://vimeo.com/showcase/12219750",items:SVC.map(([t,v,th])=>({t,v,th}))},
+  {title:"Vietinė produkcija",note:"Vietiniuose projektuose buvau Lead Producer: vedžiau projektą nuo sąmatos ir komandos iki filmavimo ir galutinių versijų. "+OTHER_CO+".",more:"https://vimeo.com/showcase/12219785",items:LOC.map(([t,v,th])=>({t,v,th}))},
   {title:"Muzikiniai klipai ir kinas",note:OTHER_CO,items:MUSIC},
-  {title:"Fotografijos prodiusavimas",note:OTHER_CO,items:PHOTO,photo:true}
+  {title:"Fotografijos prodiusavimas",note:"Šiose fotosesijose dirbau Line Producer. "+OTHER_CO+".",items:PHOTO,photo:true}
 ];
 const HERO=ROWS[1].items.slice(0,12);
 
@@ -730,6 +733,27 @@ function heroLoad(i){
 function heroPause(on){ if(!hp)return; try{ on?hp.pause():hp.play(); }catch(e){} }
 heroLoad(0);
 $('#reelBtn').addEventListener('click',()=>openLB(HERO,hi));
+
+/* ===== paslaugų kortelės: video ir nuotraukų kaita tik matomoje srityje ===== */
+(function(){
+  const vids=[...document.querySelectorAll('video.lv')], shows=[...document.querySelectorAll('.im.ss')];
+  if(reduce||!('IntersectionObserver' in window)) return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    const v=e.target;
+    if(e.isIntersecting){ if(!v.src&&v.dataset.src){v.src=v.dataset.src;} const p=v.play(); if(p&&p.catch)p.catch(()=>{}); }
+    else if(!v.paused) v.pause();
+  }),{rootMargin:'200px 0px',threshold:0.01});
+  vids.forEach(v=>io.observe(v));
+  shows.forEach(box=>{
+    const imgs=[...box.querySelectorAll('img')]; if(imgs.length<2) return;
+    let i=0,timer=null;
+    const step=()=>{imgs[i].classList.remove('on'); i=(i+1)%imgs.length; imgs[i].classList.add('on');};
+    new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){ imgs.forEach(im=>{im.loading='eager';}); if(!timer) timer=setInterval(step,3500); }
+      else { clearInterval(timer); timer=null; }
+    }),{threshold:0.2}).observe(box);
+  });
+})();
 
 /* ===== atsiradimas slenkant (kaip vjakutis.lt) ===== */
 (function(){
