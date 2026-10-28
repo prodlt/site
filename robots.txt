@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /v4/
+Disallow: /archyvas/
+Disallow: /media/src/
+
+Sitemap: https://prod.lt/sitemap.xml
