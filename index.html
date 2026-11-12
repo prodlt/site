@@ -252,6 +252,10 @@ footer .h2{margin-bottom:2rem}
 .lb-mid{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:1rem;padding:1rem}
 .lb-frame{width:min(1200px,100%,calc((100svh - 230px) * 16 / 9));aspect-ratio:16/9;background:#000;border-radius:.375rem;overflow:hidden;position:relative;border:1px solid var(--hairline)}
 .lb-frame iframe,.lb-frame img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:contain}
+.lb-ext{position:absolute;inset:0;display:block;color:var(--foreground);text-decoration:none}
+.lb-ext .pc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;background:rgba(0,0,0,.35)}
+.lb-ext:hover .pb{transform:scale(1.1)}
+.lb-ext b{font-weight:600;font-size:.875rem}
 .lb-nav{position:static;transform:none;flex:none}
 .lb-strip{display:flex;gap:.5rem;overflow-x:auto;padding:.75rem 1rem 1rem;scrollbar-width:thin;border-top:1px solid var(--hairline)}
 .lb-strip button{flex:none;width:136px;aspect-ratio:16/9;border-radius:.375rem;overflow:hidden;position:relative;opacity:.5;transition:opacity .2s,box-shadow .2s;border:1px solid var(--hairline);background:var(--card)}
@@ -583,7 +587,8 @@ const LOC=[
 const MUSIC=[
   {t:"Indochine – Le chant des cygnes",yt:"ZAmOCXgc76U"},
   {t:"NONEXISTER – How Do You Dare",yt:"EJgqqUKH_9Q"},
-  {t:"Alike – trumpametražio filmo anonsas",v:"1152209056",img:"https://vjakutis.lt/alike.jpg"}
+  {t:"Roseaux – I Am Going Home (režisieriaus versija)",v:"325422602",th:"769153579-09583aab59d756644552e00e7f71288c89117b79d125f30fb2c8c21f3f153b99-d"},
+  {t:"Alike – trumpametražio filmo anonsas",v:"1152209056",img:"https://vjakutis.lt/alike.jpg",ext:"https://vimeo.com/1152209056"}
 ];
 
 const PHOTO=[
@@ -641,7 +646,7 @@ $('#rows').innerHTML=ROWS.map((r,ri)=>`
               <span class="fallback">${esc(it.t)}</span>
               <img loading="lazy" alt="${esc(it.t)}" src="${esc(thumb(it))}" onerror="this.remove()">
               <span class="ov"></span>
-              <span class="pc"><span class="pb${r.photo?' ext':''}"><svg class="i" aria-hidden="true"><use href="${r.photo?'#i-ext':'#i-play'}"/></svg></span></span>
+              <span class="pc"><span class="pb${r.photo||it.ext?' ext':''}"><svg class="i" aria-hidden="true"><use href="${r.photo||it.ext?'#i-ext':'#i-play'}"/></svg></span></span>
             </button>
             <p class="cap">${esc(it.t)}</p>
           </div>`).join('')}
@@ -691,6 +696,8 @@ function show(i){
   lbF.innerHTML=''; lbPlayer=null;
   if(it.link&&!it.v&&!it.yt&&!it.drive){
     lbF.innerHTML=`<img src="${esc(it.img)}" alt="${esc(it.t)}">`;
+  }else if(it.ext){
+    lbF.innerHTML=`<a class="lb-ext" href="${esc(it.ext)}" target="_blank" rel="noopener noreferrer"><img src="${esc(thumb(it))}" alt="${esc(it.t)}"><span class="pc"><span class="pb ext"><svg class="i" aria-hidden="true"><use href="#i-ext"/></svg></span><b>Žiūrėti Vimeo</b></span></a>`;
   }else{
     const f=document.createElement('iframe');
     f.src=embed(it); f.allow='autoplay; fullscreen; picture-in-picture'; f.allowFullscreen=true; f.title=it.t;
@@ -715,7 +722,7 @@ $('#lbNx').addEventListener('click',()=>show(cur+1));
 document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
 document.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>{
   const r=ROWS[c.dataset.r], it=r.items[c.dataset.i];
-  if(r.photo){ window.open(it.link,'_blank','noopener'); return; }
+  if(r.photo||it.ext){ window.open(it.link||it.ext,'_blank','noopener'); return; }
   openLB(r.items,+c.dataset.i);
 }));
 
