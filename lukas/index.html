@@ -36,7 +36,8 @@ if(window.tailwind)tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sy
   .soc{color:#737373;transition:color .2s ease,transform .2s ease}
   .soc:hover{transform:translateY(-1px)}
   .soc-imdb:hover{color:#F5C518}.soc-ig:hover{color:#E4405F}.soc-fb:hover{color:#1877F2}
-  .card .thumb img{transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .4s}
+  .card .thumb img{transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .5s}
+  :root{--card:#111111}
   .card:hover .thumb img{transform:scale(1.035)}
   .card .play{opacity:0;transform:scale(.9);transition:all .3s}
   .card:hover .play{opacity:1;transform:scale(1)}
@@ -218,12 +219,12 @@ if(window.tailwind)tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sy
 
 <!-- ============ LIGHTBOX ============ -->
 <div id="lightbox" class="hidden-lb fixed inset-0 z-[60] bg-[#0B0B0B]/95 flex items-center justify-center p-4 md:p-12" role="dialog" aria-modal="true" aria-label="Video player">
-  <button id="lbClose" class="absolute top-5 right-5 md:top-7 md:right-8 text-paper/70 hover:text-paper font-mono text-[12px] uppercase tracking-widest" aria-label="Close">Close ✕</button>
+  <button id="lbClose" class="absolute top-5 right-5 md:top-7 md:right-8 text-white/70 hover:text-white font-mono text-[12px] uppercase tracking-widest" aria-label="Close">Close ✕</button>
   <div class="w-full max-w-[1280px]">
     <div class="relative w-full aspect-video bg-black" id="lbFrame"></div>
-    <div class="mt-4 flex flex-col md:flex-row md:items-baseline justify-between gap-2 text-paper">
-      <div><span id="lbTitle" class="text-[15px] font-medium"></span> <span id="lbMeta" class="ml-2 font-mono text-[11px] text-paper/50 uppercase tracking-wider"></span></div>
-      <a id="lbExt" href="#" target="_blank" rel="noopener" class="font-mono text-[11px] uppercase tracking-wider text-paper/60 hover:text-paper">Open on source ↗</a>
+    <div class="mt-4 flex flex-col md:flex-row md:items-baseline justify-between gap-2 text-white">
+      <div><span id="lbTitle" class="text-[15px] font-medium"></span> <span id="lbMeta" class="ml-2 font-mono text-[11px] text-white/50 uppercase tracking-wider"></span></div>
+      <a id="lbExt" href="#" target="_blank" rel="noopener" class="font-mono text-[11px] uppercase tracking-wider text-white/60 hover:text-white">Open on source ↗</a>
     </div>
   </div>
 </div>
@@ -351,7 +352,7 @@ const tc = s => String(s||"").toLowerCase().replace(/(^|[\s\-–\/(&·'’.])(\p
   .replace(/\b(\d+)(St|Nd|Rd|Th)\b/g,(m,a,b)=>a+b.toLowerCase()).replace(/\bW\b/g,'w').replace(/\bS(\d)\b/g,'S$1');
 const embedUrl = v => v.type === "vimeo" ? `https://player.vimeo.com/video/${v.id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1` : `https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0&modestbranding=1`;
 const pageUrl  = v => v.type === "vimeo" ? `https://vimeo.com/${v.id}` : `https://www.youtube.com/watch?v=${v.id}`;
-const thumbUrl = v => v.type === "vimeo" ? `https://vumbnail.com/${v.id}_large.jpg` : `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`;
+const thumbUrl = v => v.type === "vimeo" ? `https://vumbnail.com/${v.id}_large.jpg` : `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`;
 const keyOf = (t,y) => (t + "|" + y).toUpperCase();
 const VIDEO_BY_KEY = Object.fromEntries(VIDEOS.map(v => [keyOf(v.match, v.year), v]));
 const videoFor = r => VIDEO_BY_KEY[keyOf(r.t, r.y)];
@@ -374,14 +375,14 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") closeVideo()
 /* ---------- featured grid ---------- */
 $("#featured").innerHTML = VIDEOS.map((v,i) => `
   <button class="card reveal text-left group" data-i="${i}" aria-label="Play ${esc(v.title)}">
-    <div class="thumb relative aspect-video overflow-hidden bg-ink">
-      <div class="absolute inset-0 flex flex-col justify-between p-5 text-paper">
-        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">${esc(v.co)} · ${v.year}</span>
+    <div class="thumb relative aspect-video overflow-hidden bg-[var(--card)]">
+      <div class="absolute inset-0 flex flex-col justify-between p-5 text-white">
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">${esc(v.co)} · ${v.year}</span>
         <span class="text-[26px] md:text-[30px] font-semibold tracking-[-0.03em] leading-none">${esc(v.brand)}</span>
       </div>
-      <img src="${thumbUrl(v)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover grayscale-[15%]" onerror="this.remove()">
+      <img data-i="${i}" alt="${esc(v.title)} — thumbnail" class="vthumb absolute inset-0 w-full h-full object-cover opacity-0">
       <span class="play absolute inset-0 flex items-center justify-center bg-black/25">
-        <span class="w-14 h-14 rounded-full bg-paper/95 flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="#111"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+        <span class="w-14 h-14 rounded-full bg-white/95 flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="#111"><path d="M7 4.5v15l13-7.5z"/></svg></span>
       </span>
     </div>
     <div class="mt-4 flex items-baseline justify-between gap-4 border-b border-line pb-3">
@@ -390,6 +391,28 @@ $("#featured").innerHTML = VIDEOS.map((v,i) => `
     </div>
     <p class="mt-2.5 text-[12.5px] text-mute">Dir. <span class="text-ink">${esc(v.director)}</span> &nbsp;·&nbsp; ${esc(v.co)}</p>
   </button>`).join("");
+
+/* ---------- thumbnails: Vimeo oEmbed → real poster frame; YouTube maxres → hq ---------- */
+document.querySelectorAll(".vthumb").forEach(async img => {
+  const v = VIDEOS[+img.dataset.i];
+  const show = () => { img.classList.remove("opacity-0"); };
+  img.onload = () => {
+    if (v.type === "youtube" && img.naturalWidth < 200 && !img.dataset.fb) { img.dataset.fb = 1; img.src = `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`; return; }
+    show();
+  };
+  img.onerror = () => {
+    if (!img.dataset.fb) { img.dataset.fb = 1; img.src = v.type === "vimeo" ? thumbUrl(v) : `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`; }
+    else img.remove();
+  };
+  if (v.type === "vimeo") {
+    try {
+      const r = await fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent("https://vimeo.com/" + v.id)}&width=1280`);
+      const j = await r.json();
+      if (!j.thumbnail_url) throw 0;
+      img.src = j.thumbnail_url.replace(/_\d+x\d+/, "_1280x720");
+    } catch { img.dataset.fb = 1; img.src = thumbUrl(v); }
+  } else img.src = thumbUrl(v);
+});
 $("#featured").addEventListener("click", e => { const c = e.target.closest(".card"); if (c) openVideo(VIDEOS[+c.dataset.i]); });
 
 /* ---------- credits archive ---------- */
